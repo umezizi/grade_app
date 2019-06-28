@@ -1,0 +1,15 @@
+current directory: /Users/macbookrm/Documents/pgm/rails-t/environment/grade_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+/Users/macbookrm/.rbenv/versions/2.6.2/bin/ruby -I /Users/macbookrm/.rbenv/versions/2.6.2/lib/ruby/2.6.0 -r ./siteconf20190628-6597-mq0ki6.rb extconf.rb
+creating Makefile
+
+current directory: /Users/macbookrm/Documents/pgm/rails-t/environment/grade_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/macbookrm/Documents/pgm/rails-t/environment/grade_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/cruby.bundle
+
+current directory: /Users/macbookrm/Documents/pgm/rails-t/environment/grade_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20190628-6597-uvwctl/skiptrace
