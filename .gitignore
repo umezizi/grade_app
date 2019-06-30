@@ -68,4 +68,6 @@ yarn-debug.log*
 
 .docker-env
 
+db/data
+
 # End of https://www.gitignore.io/api/rails

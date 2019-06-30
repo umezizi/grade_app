@@ -5,7 +5,7 @@ services:
       context: .
     env_file: .docker-env
     volumes:
-      - .:/web:cached
+      - .:/grade_app
     ports:
       - "3000:3000"
     links:
