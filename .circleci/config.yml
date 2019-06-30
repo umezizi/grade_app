@@ -48,6 +48,11 @@ jobs:
           command: |
             $(aws ecr get-login --no-include-email --region ap-northeast-1)
             docker build -t ${ECR_DOMAIN}/grade-image:$CIRCLE_SHA1 -t ${ECR_DOMAIN}/grade-image:latest --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production .
+      - run:
+          name: Push docker image
+          command: |
+            docker push ${ECR_DOMAIN}/grate-image:$CIRCLE_SHA1
+            docker push ${ECR_DOMAIN}/grate-image:latest
 workflows:
   version: 2
   test:
