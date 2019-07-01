@@ -27,11 +27,11 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: bundle exec rake db:migrate
       - run:
           name: run tests
           command: |
-            bundle exec rspec
+            DISABLE_SPRING=true bundle exec rspec
   build_image:
     docker:
       - image: docker:18.09.0
