@@ -15,7 +15,7 @@ test:
   <<: *default
   username: root
   host: <%= ENV['DB_HOST']%>
-  database: rails_share_development
+  database: grade_share_development
   socket: /tmp/mysql.sock
 
 production:
