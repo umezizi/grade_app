@@ -31,7 +31,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            DISABLE_SPRING=true bundle exec rspec
+            bundle exec rspec
   build_image:
     docker:
       - image: docker:18.09.0
