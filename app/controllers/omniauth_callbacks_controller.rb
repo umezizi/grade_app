@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # callback処理
   def twitter
     @user = User.from_omniauth(request.env["omniauth.auth"].except("extra"))
