@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "UsersLayouts", type: :feature do
   describe "新規登録ページのテスト" do
     before do
-      visit users_new_path
+      visit signup_path
     end
 
     it "タイトルが正しく表示されていること" do
