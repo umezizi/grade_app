@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'about', to: 'pages#about'
+  get '/about',   to: 'pages#about'
+  get '/signup',  to: 'users#new'
   root to: 'gyms#index'
 
   # ヘルスチェック用のroutesを設定
