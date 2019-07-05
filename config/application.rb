@@ -31,6 +31,7 @@ module GradeApp
     config.generators.system_tests = nil
 
     config.generators do |g|
+      g.assets false              # CSS/JSファイル生成しない
       g.test_framework :rspec,
         fixtures: true,
         view_specs: false,
