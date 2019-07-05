@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
   get '/about',   to: 'pages#about'
   get '/signup',  to: 'users#new'
   root to: 'gyms#index'
