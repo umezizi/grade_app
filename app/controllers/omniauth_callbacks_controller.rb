@@ -1,7 +1,9 @@
-class OmniauthCallbacksController < ApplicationController
+class OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
+  # callback処理
   def twitter
     @user = User.from_omniauth(request.env["omniauth.auth"].except("extra"))
 
+    # Twitterアカウント情報が登録済みか確認
     if @user.persisted?
       sign_in_and_redirect @user
     else
