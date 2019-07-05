@@ -6,21 +6,25 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:twitter]
 
 
-  def self.from_omniauth(auth)
-    find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.username = auth["info"]["nickname"]
-    end
+  # Oauth認証データでユーザーを検索。いない場合ユーザーを新規作成。
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    user ||= User.create(username: auth.info.name,
+                         email: User.dummy_email(auth),
+                         provider: auth.provider,
+                         uid: auth.uid,
+                         password: Devise.friendly_token[0, 20])
+                         # remote_image_url: auth.info.image.gsub('http', 'https'))
+
+    user
   end
 
-  def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"]) do |user|
-        user.attributes = params
-      end
-    else
-      super
+  private
+
+    # Oauth認証でユーザー登録する際に使用するユニークのメールアドレスを作成
+    def self.dummy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
     end
-  end
+
 end
