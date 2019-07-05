@@ -14,4 +14,13 @@ RSpec.feature "Layouts", type: :feature do
       expect(page).to have_link 'About', href: about_path
     end
   end
+
+  describe "Aboutページのテスト" do
+    before do
+      visit about_path   # 名前付きルートを使用
+    end
+
+    it "タイトルが正しく表示されていること" do
+      expect(page).to have_title "About"
+    end
 end
