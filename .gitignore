@@ -70,6 +70,5 @@ yarn-debug.log*
 
 db/mysql_data
 
-config/initializers/devise.rb
 
 # End of https://www.gitignore.io/api/rails
