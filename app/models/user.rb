@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   private
 
-    # Oauth認証でユーザー登録する際に使用するユニークのメールアドレスを作成
+    # Oauth認証でユーザー登録する際に使用するユニークなメールアドレスを作成
     def self.dummy_email(auth)
       "#{auth.uid}-#{auth.provider}@example.com"
     end
