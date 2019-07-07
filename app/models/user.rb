@@ -10,7 +10,7 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    user ||= User.create(username: auth.info.name,
+    user ||= User.create(name: auth.info.name,
                          email: User.dummy_email(auth),
                          provider: auth.provider,
                          uid: auth.uid,
