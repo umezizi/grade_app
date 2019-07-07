@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # twitter認証のcallback処理
   def twitter
