@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:twitter]
 
+  validates :name, presence: true
+  validates :profile, length: { maximum: 200 }
 
   # Oauth認証データでユーザーを検索。いない場合ユーザーを新規作成。
   def self.find_for_oauth(auth)

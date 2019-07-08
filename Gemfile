@@ -17,6 +17,7 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'aws-ses'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
