@@ -1,33 +1,33 @@
-defaults: &defaults
-  fog_provider: 'AWS'
-  aws_access_key_id: Rails.application.credentials.aws[:aws_access_key_id]
-  aws_secret_access_key: Rails.application.credentials.aws[:aws_secret_access_key]
-  # To use AWS reduced redundancy storage.
-  # aws_reduced_redundancy: true
-  fog_directory: "grade-share_bucket"
-  # You may need to specify what region your storage bucket is in
-  # fog_region: "eu-west-1"
-  existing_remote_files: keep
-  # To delete existing remote files.
-  # existing_remote_files: delete
-  # Automatically replace files with their equivalent gzip compressed version
-  # gzip_compression: true
-  # Fail silently.  Useful for environments such as Heroku
-  # fail_silently: true
-
-development:
-  <<: *defaults
-  enabled: false
-
-test:
-  <<: *defaults
-  enabled: false
-
-staging:
-  <<: *defaults
-  fog_directory: "grade-share_bucket"
-
-production:
-  <<: *defaults
-  fog_directory: "grade-share_bucket"
-
+# defaults: &defaults
+#   fog_provider: 'AWS'
+#   aws_access_key_id: Rails.application.credentials.aws[:aws_access_key_id]
+#   aws_secret_access_key: Rails.application.credentials.aws[:aws_secret_access_key]
+#   fog_directory: "grade-share_bucket"
+#   existing_remote_files: keep
+#   # To use AWS reduced redundancy storage.
+#   # aws_reduced_redundancy: true
+#   # You may need to specify what region your storage bucket is in
+#   # fog_region: "eu-west-1"
+#   # To delete existing remote files.
+#   # existing_remote_files: delete
+#   # Automatically replace files with their equivalent gzip compressed version
+#   # gzip_compression: true
+#   # Fail silently.  Useful for environments such as Heroku
+#   # fail_silently: true
+#
+# development:
+#   <<: *defaults
+#   enabled: false
+#
+# test:
+#   <<: *defaults
+#   enabled: false
+#
+# staging:
+#   <<: *defaults
+#   fog_directory: "grade-share_bucket"
+#
+# production:
+#   <<: *defaults
+#   fog_directory: "grade-share_bucket"
+#

@@ -31,7 +31,6 @@ ADD . $APP_ROOT
 RUN if [ "${RAILS_ENV}" = "production" ]; then curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs; fi
 RUN if [ "${RAILS_ENV}" = "production" ]; then npm install yarn -g; fi
 RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
-RUN if [ "${RAILS_ENV}" = "production" ]; then rm -f tmp/pids/server.pid; fi
 
 EXPOSE  3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
