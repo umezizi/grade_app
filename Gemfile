@@ -18,6 +18,8 @@ gem 'jbuilder',     '2.7.0'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'aws-ses'
+gem 'mini_magick', '~> 4.8'
+gem 'asset_sync'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
