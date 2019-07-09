@@ -28,7 +28,7 @@ RUN \
 ADD . $APP_ROOT
 
 # RAILS_ENVがproduction のとき assets:precompile を実行するようにします
-RUN if [ "${RAILS_ENV}" = "production" ]; then npm install yarn -g;
+RUN if [ "${RAILS_ENV}" = "production" ]; then npm install yarn -g; fi
 RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
 
 EXPOSE  3000
