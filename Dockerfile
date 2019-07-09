@@ -28,9 +28,9 @@ RUN \
 ADD . $APP_ROOT
 
 # RAILS_ENVがproduction のとき assets:precompile を実行するようにします
-RUN if [ "${RAILS_ENV}" = "production" ]; then apt-get update; fi
-RUN if [ "${RAILS_ENV}" = "production" ]; then apt-get install -y nodejs npm --no-install-recommends && rm -rf /var/lib/apt/lists/*; fi
-RUN if [ "${RAILS_ENV}" = "production" ]; then npm install yarn -g; fi
+RUN if [ "${RAILS_ENV}" = "production" ]; then curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -; fi
+RUN if [ "${RAILS_ENV}" = "production" ]; then echo "deb https://dl.yarnpkg.com/debian/ stable main" |  tee /etc/apt/sources.list.d/yarn.list; fi
+RUN if [ "${RAILS_ENV}" = "production" ]; then apt-get update && apt-get install yarn; fi
 RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
 
 EXPOSE  3000
