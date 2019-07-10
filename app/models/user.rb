@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  require 'open-uri'
+
   has_one_attached :image
   validate  :validate_image
   validates :name, presence: true
@@ -17,15 +19,25 @@ class User < ApplicationRecord
                          email: User.dummy_email(auth),
                          provider: auth.provider,
                          uid: auth.uid,
-                         password: Devise.friendly_token[0, 20])
-                         # remote_image_url: auth.info.image.gsub('http', 'https'))
+                         password: Devise.friendly_token[0, 20],
+                         image_url: auth.info.image.gsub('http', 'https'))
 
-    user
+    # user
   end
 
   # プロフィール画像のリサイズ
   def thumbnail
     return self.image.variant(resize: '300x300').processed
+  end
+
+  # URLから画像を取得
+  def download_oauth_image
+    return unless oauth_image_url
+
+    file = open(oauth_image_url)
+    image.attach(io: file,
+                 filename: "profile_image.#{file.content_type_parse.first.split("/").last}",
+                 content_type: file.content_type_parse.first)
   end
 
 
@@ -34,6 +46,11 @@ class User < ApplicationRecord
     # Oauth認証でユーザー登録する際に使用するユニークなメールアドレスを作成
     def self.dummy_email(auth)
       "#{auth.uid}-#{auth.provider}@example.com"
+    end
+
+    # Twitter の画像のオリジナルサイズのURLを取得する
+    def oauth_image_url
+      image_url&.gsub(/_normal/, '')
     end
 
     # プロフィール画像について、3MB以下 かつ jpeg,pngファイルのみ許可
