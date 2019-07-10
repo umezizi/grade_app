@@ -6,6 +6,7 @@ application up and running.
 Things you may want to cover:
 
 test
+test
 
 * Ruby version
 
