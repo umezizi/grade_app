@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :image
   # validate  :image_size, :image_type
-  validate  :image_type
+  validate  :validate_image
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
 
@@ -38,9 +38,25 @@ class User < ApplicationRecord
     end
 
     # プロフィール画像について、jpeg,pngファイルのみ許可
-    def image_type
-      if !image.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:image, 'needs to be a JPEG or PNG')
+    # def image_type
+    #   if !image.content_type.in?(%('image/jpeg image/png'))
+    #     errors.add(:image, 'needs to be a JPEG or PNG')
+    #   end
+    # end
+
+    # プロフィール画像について、3MB以下 かつ jpeg,pngファイルのみ許可
+    def validate_image
+      return unless image.attached?
+      if image.blob.byte_size > 3.megabytes
+        image.purge
+        errors.add(:image, 'エラー ファイルサイズは３MBが上限です')
+      elsif !image_type?
+        image.purge
+        errors.add(:image, 'エラー Jpeg,PNGファイルを指定ください')
       end
+    end
+
+    def image_type?
+      %w[image/jpg image/jpeg image/png].include?(image.blob.content_type)
     end
 end
