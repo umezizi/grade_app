@@ -18,8 +18,6 @@ RUN gem uninstall bundler
 RUN rm /usr/local/bin/bundle
 RUN rm /usr/local/bin/bundler
 RUN gem install bundler
-# RUN apt-get update && \
-#     apt-get install -y nodejs
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs
 
@@ -30,7 +28,6 @@ RUN \
 ADD . $APP_ROOT
 
 # RAILS_ENVがproduction のとき assets:precompile を実行するようにします
-# RUN if [ "${RAILS_ENV}" = "production" ]; then curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs; fi
 RUN if [ "${RAILS_ENV}" = "production" ]; then npm install yarn -g; fi
 RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
 
