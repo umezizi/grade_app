@@ -22,7 +22,7 @@ class User < ApplicationRecord
                          password: Devise.friendly_token[0, 20],
                          image_url: auth.info.image.gsub('http', 'https'))
 
-    # user
+    user
   end
 
   # プロフィール画像のリサイズ
