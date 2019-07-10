@@ -22,6 +22,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'asset_sync'
 gem "fog-aws"
 gem "aws-sdk-s3", require: false
+gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
