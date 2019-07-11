@@ -1,3 +1,9 @@
+<%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+  <%= f.hidden_field :email, {value: 'test@example.com'} %>
+  <%= f.hidden_field :password, {value: 'password'} %>
+  <%= f.submit "テストユーザーでログイン", class: "submit-btn" %>
+<% end %>
+
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>
