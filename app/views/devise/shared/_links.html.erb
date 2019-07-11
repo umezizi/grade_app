@@ -1,7 +1,9 @@
-<%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
-  <%= f.hidden_field :email, {value: 'test@example.com'} %>
-  <%= f.hidden_field :password, {value: 'password'} %>
-  <%= f.submit "テストユーザーでログイン", class: "submit-btn" %>
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+    <%= f.hidden_field :email, {value: 'test@example.com'} %>
+    <%= f.hidden_field :password, {value: 'password'} %>
+    <%= f.submit "テストユーザーでログイン", class: "submit-btn" %>
+  <% end %>
 <% end %>
 
 <%- if controller_name != 'sessions' %>
