@@ -5,6 +5,10 @@
     <%= link_to(user, class: 'list-group-item') do %>
       <h4 class="list-group-item-heading">
         <%= user.name %>
+        <% if current_user.admin? && !(current_user == user) %>
+         | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "ユーザーを削除しますか？" } %>
+        <% end %>
       </h4>
       <p class="list-group-item-text">
         <%= user.profile %>
