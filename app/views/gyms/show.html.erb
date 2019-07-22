@@ -1,3 +1,6 @@
 <h1>Gyms#show</h1>
-<h1>Gyms#show</h1>
-<p>Find me in app/views/gyms/show.html.erb</p>
+<p> ジム名 : <%= @gym.gym_name %></p>
+<p>詳細 : <%= @gym.details %></p>
+<p><% if @gym.gym_image.attached? %>
+  <%= image_tag @gym.gym_image_resize %>
+<% end %></p>

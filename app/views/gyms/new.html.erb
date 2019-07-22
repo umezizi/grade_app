@@ -1,0 +1,24 @@
+<h1>Gyms#show</h1>
+
+<%= form_for(@gym, url: gyms_path) do |f| %>
+
+  <div class="field">
+    <%= f.label :gym_name %>
+    <%= f.text_field :gym_name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :details %>
+    <%= f.text_field :details, autocomplete: "details" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :gym_image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "ジム作成" %>
+  </div>
+
+<% end %>

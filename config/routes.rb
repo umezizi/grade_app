@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'gyms#index'
   get '/about',   to: 'pages#about'
-  resources :gyms,  only: [:show, :index, :edit, :create]
+  resources :gyms,  only: [:show, :index, :edit, :new, :create]
   resources :users, only: [:show, :index, :destroy]
 
   # ヘルスチェック用のroutesを設定

@@ -27,4 +27,13 @@ class ApplicationController < ActionController::Base
     def store_current_location
       store_location_for(:user, request.url)
     end
+
+    def user_login?
+      redirect_to(root_url) unless user_signed_in?
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
 end
