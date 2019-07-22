@@ -1,0 +1,16 @@
+<h1>ユーザー一覧</h1>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <%= link_to(user, class: 'list-group-item') do %>
+      <h4 class="list-group-item-heading">
+        <%= user.name %>
+      </h4>
+      <p class="list-group-item-text">
+        <%= user.profile %>
+      </p>
+    <% end %>
+  <% end %>
+  <%= paginate @users %>
+</ul>
+

@@ -23,12 +23,15 @@ gem 'asset_sync'
 gem "fog-aws"
 gem "aws-sdk-s3", require: false
 gem "omniauth-rails_csrf_protection"
+gem 'kaminari', '~> 0.17.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'capybara'
+  gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do

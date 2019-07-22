@@ -6,5 +6,11 @@ RSpec.describe "Gyms", type: :request do
       get root_path
       expect(response).to have_http_status(200)
     end
+
+    # it 'ジム名が表示されていること' do
+    #   get root_path
+    #   expect(response.body).to include "ボルコム"
+    #   expect(response.body).to include "ロッキー"
+    # end
   end
 end
