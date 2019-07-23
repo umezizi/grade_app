@@ -2,10 +2,10 @@ class UsersController < ApplicationController
   before_action :user_login?, only: [:index, :show, :destroy]
   before_action :admin_user, only: :destroy
 
-  PER = 10
+  MAX_USERS = 10
 
   def index
-    @users = User.page(params[:page]).per(PER)
+    @users = User.page(params[:page]).per(MAX_USERS)
   end
 
   def show

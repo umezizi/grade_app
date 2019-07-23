@@ -2,8 +2,11 @@ class GymsController < ApplicationController
   before_action :user_login?, only: [:new, :create, :edit, :update, :destroy]
   before_action :admin_user,  only: [:new, :create, :edit, :update, :destroy]
 
+  MAX_GYMS = 9
+
   def index
-    @gyms = Gym.page(params[:page]).per(9)
+    @q    = Gym.ransack(params[:q])
+    @gyms = @q.result.includes(:gym_image_attachment).page(params[:page]).per(MAX_GYMS)
   end
 
   def show
@@ -45,5 +48,9 @@ class GymsController < ApplicationController
 
     def gym_params
       params.require(:gym).permit(:gym_name, :details, :gym_image)
+    end
+
+    def search_params
+      params.require(:q).permit!
     end
 end

@@ -8,6 +8,12 @@
       <a href="#" class="btn btn-primary my-2">Main call to action</a>
       <a href="#" class="btn btn-secondary my-2">Secondary action</a>
     </p>
+    <p>
+    <%= search_form_for(@q, url:gyms_path) do |f| %>
+      <%= f.search_field :gym_name_cont, class: "form-control mr-sm-2", placeholder: "ジムを検索..."  %>
+      <%= f.submit class: "btn btn-danger my-2 my-sm-0 search-btn" %>
+    <% end %>
+    </p>
   </div>
 </section>
 
