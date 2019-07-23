@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   require 'open-uri'
 
+  has_many :reviews
   has_one_attached :image
   validate  :validate_image
   validates :name, presence: true

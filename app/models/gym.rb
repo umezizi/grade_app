@@ -1,4 +1,5 @@
 class Gym < ApplicationRecord
+  has_many :reviews, dependent: :destroy
   has_one_attached :gym_image
   validate  :validate_gym_image
   validates :gym_name, presence: true, length: { maximum: 50 },

@@ -1,0 +1,40 @@
+<h1>Reviews#new</h1>
+
+<%= form_for(@review, url: gym_reviews_path) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_field :content, autocomplete: "content" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grade %>
+    <%= f.select :grade, [["1(簡単)", 1], ["2(少し簡単)", 2],  ["3(標準的)", 3], ["4(少し難しい)", 4], ["5(難しい)", 5] ], :selected => 3 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :breadth %>
+    <%= f.select :breadth, [["1(狭い)", 1], ["2(少し狭い)", 2],  ["3(標準的)", 3], ["4(少し広い)", 4], ["5(広い)", 5] ], :selected => 3 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :wall_height %>
+    <%= f.select :wall_height, [["1(低い)", 1], ["2(少し低い)", 2],  ["3(標準的)", 3], ["4(少し高い)", 4], ["5(高い)", 5] ], :selected => 3 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :congestion %>
+    <%= f.select :congestion, [["1(空いている", 1], ["2(少し空いている)", 2],  ["3(標準的)", 3], ["4(少し混んでいる)", 4], ["5(混んでいる)", 5] ], :selected => 3 %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "レビューを投稿する" %>
+  </div>
+
+<% end %>

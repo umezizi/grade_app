@@ -2,7 +2,8 @@ class GymsController < ApplicationController
   before_action :user_login?, only: [:new, :create, :edit, :update, :destroy]
   before_action :admin_user,  only: [:new, :create, :edit, :update, :destroy]
 
-  MAX_GYMS = 9
+  MAX_GYMS    = 9
+  MAX_REVIEWS = 5
 
   def index
     @q    = Gym.ransack(params[:q])
@@ -11,6 +12,7 @@ class GymsController < ApplicationController
 
   def show
     @gym = Gym.find(params[:id])
+    @reviews = @gym.reviews.page(params[:page]).per(MAX_REVIEWS)
   end
 
   def new
