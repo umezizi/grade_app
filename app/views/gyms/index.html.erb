@@ -1,13 +1,38 @@
 <% provide(:title, "GradeShare") %>
 <h1>gym index</h1>
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Album example</h1>
+    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+    <p>
+      <a href="#" class="btn btn-primary my-2">Main call to action</a>
+      <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+    </p>
+  </div>
+</section>
 
-  <h2>
-    This is the home page for the
-    <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
+<div class="album py-5 bg-light">
+  <div class="container">
 
-  <%= link_to "はじめる", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    <div class="row">
+      <% @gyms.each do |gym| %>
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <%= link_to image_tag(gym.gym_image_resize("300x300"), class: "card-img-top"), gym_path(gym) %>
+            <div class="card-body">
+              <p class="card-text"><%= gym.gym_name %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">レビュー数</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @gyms %>
+  </div>
 </div>

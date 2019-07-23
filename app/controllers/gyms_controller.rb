@@ -1,8 +1,9 @@
 class GymsController < ApplicationController
-  before_action :user_login?, only: [:new, :create, :destroy]
-  before_action :admin_user,  only: [:new, :create, :destroy]
+  before_action :user_login?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_user,  only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    @gyms = Gym.page(params[:page]).per(9)
   end
 
   def show
@@ -20,6 +21,24 @@ class GymsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def edit
+    @gym = Gym.find(params[:id])
+  end
+
+  def update
+    @gym = Gym.find(params[:id])
+    if @gym.update_attributes(gym_params)
+      redirect_to gym_path(@gym)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    Gym.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private

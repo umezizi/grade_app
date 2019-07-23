@@ -2,5 +2,16 @@
 <p> ジム名 : <%= @gym.gym_name %></p>
 <p>詳細 : <%= @gym.details %></p>
 <p><% if @gym.gym_image.attached? %>
-  <%= image_tag @gym.gym_image_resize %>
+  <%= image_tag @gym.gym_image_resize("400x400") %>
 <% end %></p>
+<p>
+<% if current_user.admin? %>
+  <%= link_to "編集",   edit_gym_path %>
+  <%= link_to "delete", @gym, method: :delete,
+                        data: { confirm: "ジムを削除しますか？" } %>
+<% end %>
+</p>
+<p>グレード： <%= @gym.grade %></p>
+<p>広さ： <%= @gym.breadth %></p>
+<p>壁の高さ： <%= @gym.wall_height %></p>
+<p>混雑度： <%= @gym.congestion %></p>

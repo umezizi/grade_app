@@ -1,6 +1,6 @@
-<h1>Gyms#new/h1>
+<h1>Gyms#edit</h1>
 
-<%= form_for(@gym, url: gyms_path) do |f| %>
+<%= form_for(@gym, url: gym_path) do |f| %>
 
   <div class="field">
     <%= f.label :gym_name %>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "ジム作成" %>
+    <%= f.submit "ジム更新" %>
   </div>
 
 <% end %>
