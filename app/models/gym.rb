@@ -5,6 +5,11 @@ class Gym < ApplicationRecord
   validates :gym_name, presence: true, length: { maximum: 50 },
              uniqueness: { case_sensitive: false }
   validates :details, length: { maximum: 500 }
+  validates :address,   presence: true
+
+  # アドレスから経度・緯度を取得
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   # ジム画像のリサイズ
   def gym_image_resize(size)

@@ -8,6 +8,8 @@
     <%= javascript_include_tag 'application',
                                'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>
+    <script src="//maps.google.com/maps/api/js?v=3.23&key=<%= Rails.application.credentials.google[:google_map_api_key] %>"></script>
+    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
   </head>
 
   <body>
