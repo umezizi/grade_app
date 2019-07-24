@@ -11,10 +11,10 @@
                         data: { confirm: "ジムを削除しますか？" } %>
 <% end %>
 </p>
-<p>グレード： </p>
-<p>広さ： </p>
-<p>壁の高さ： </p>
-<p>混雑度： </p>
+<p>グレード：<%= @grade %> </p>
+<p>広さ：<%= @breadth %> </p>
+<p>壁の高さ：<%= @wall_height %> </p>
+<p>混雑度：<%= @congestion %> </p>
 <p>
 <% if user_signed_in? %>
   <span><%= link_to "レビューする", new_gym_review_path(@gym) %></span>

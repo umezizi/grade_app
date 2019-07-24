@@ -5,3 +5,19 @@
 <p><% if @user.image.attached? %>
   <%= image_tag @user.thumbnail %>
 <% end %></p>
+
+
+<ul class="reviews">
+  <% @reviews.each do |review| %>
+    <h4 class="list-group-item-heading">
+      <%= review.title %>
+    </h4>
+    <p class="list-group-item-text">
+      <%= review.content %>
+    </p>
+  <% end %>
+  <%= paginate @reviews %>
+</ul>
+
+
+

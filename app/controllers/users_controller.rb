@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   MAX_USERS = 10
+  MAX_REVIEWS = 5
 
   def index
     @users = User.page(params[:page]).per(MAX_USERS)
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reviews = @user.reviews.page(params[:page]).per(MAX_REVIEWS)
   end
 
   def destroy

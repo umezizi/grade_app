@@ -13,6 +13,11 @@ class GymsController < ApplicationController
   def show
     @gym = Gym.find(params[:id])
     @reviews = @gym.reviews.page(params[:page]).per(MAX_REVIEWS)
+
+    @grade       = Review.rating_average(@gym.id, :grade)
+    @breadth     = Review.rating_average(@gym.id, :breadth)
+    @wall_height = Review.rating_average(@gym.id, :wall_height)
+    @congestion  = Review.rating_average(@gym.id, :congestion)
   end
 
   def new
