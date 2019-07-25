@@ -6,6 +6,21 @@
   <%= image_tag @user.thumbnail %>
 <% end %></p>
 
+<% if user_signed_in? && @user == current_user %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section>
+        <%= form_for(@post) do |f| %>
+          <div class="field">
+            <%= f.text_area :comment, placeholder: "つぶやく..." %>
+          </div>
+          <%= f.submit "コメント", class: "btn btn-primary" %>
+        <% end %>
+      </section>
+    </aside>
+  </div>
+<% end %>
+
 
 <ul class="reviews">
   <% @reviews.each do |review| %>
@@ -20,4 +35,18 @@
 </ul>
 
 
+<ul class="posts">
+  <% @posts.each do |post| %>
+    <h4 class="list-group-item-heading">
+      <%= link_to post.user.name, post.user %>
+    </h4>
+    <p class="list-group-item-text">
+      <%= post.comment %>
+    </p>
+    <p class="list-group-item-text">
+      Posted <%= time_ago_in_words(post.created_at) %> ago.
+    </p>
+  <% end %>
+  <%= paginate @posts %>
+</ul>
 

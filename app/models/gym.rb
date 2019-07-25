@@ -1,5 +1,6 @@
 class Gym < ApplicationRecord
   has_many :reviews, dependent: :destroy
+  default_scope -> { order(created_at: :desc) }
   has_one_attached :gym_image
   validate  :validate_gym_image
   validates :gym_name, presence: true, length: { maximum: 50 },
@@ -18,9 +19,20 @@ class Gym < ApplicationRecord
 
   private
 
+    # アップロード画像について、3MB以下 かつ jpeg,pngファイルのみ許可
     def validate_gym_image
-      unless gym_image.attached?
-        errors.add(:gym_image, 'ファイルが指定されていません。')
+      if !gym_image.attached?
+        errors.add(:gym_image, 'ファイルが指定されていません')
+      elsif gym_image.blob.byte_size > 3.megabytes
+        gym_image.purge
+        errors.add(:gym_image, 'エラー ファイルサイズは3MBが上限です')
+      elsif !image_type?
+        gym_image.purge
+        errors.add(:gym_image, 'エラー JPEG,PNGファイルを指定ください')
       end
+    end
+
+    def image_type?
+      %w[image/jpg image/jpeg image/png].include?(gym_image.blob.content_type)
     end
 end

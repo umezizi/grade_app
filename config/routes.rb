@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root to: 'gyms#index'
   get '/about',   to: 'pages#about'
   resources :users, only: [:show, :index, :destroy]
-  resources :gyms, only: [:show, :index, :edit, :update, :new, :create, :destroy] do
+  resources :posts, only: [:create, :destroy]
+  resources :gyms,  only: [:show, :index, :edit, :update, :new, :create, :destroy] do
     resources :reviews, only: [:new, :create, :destroy]
   end
 
