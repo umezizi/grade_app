@@ -1,4 +1,13 @@
 <h1>Gyms#show</h1>
+<% if user_signed_in? %>
+  <div id="like_form">
+    <% if current_user.favorite?(@gym) %>
+      <%= render 'unlike' %>
+    <% else %>
+      <%= render 'like' %>
+    <% end %>
+  </div>
+<% end %>
 <p> ジム名 : <%= @gym.gym_name %></p>
 <p>詳細 : <%= @gym.details %></p>
 <p><% if @gym.gym_image.attached? %>

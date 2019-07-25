@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/about',   to: 'pages#about'
   resources :users, only: [:show, :index, :destroy]
   resources :posts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   resources :gyms,  only: [:show, :index, :edit, :update, :new, :create, :destroy] do
     resources :reviews, only: [:new, :create, :destroy]
   end

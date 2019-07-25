@@ -1,5 +1,10 @@
 class Gym < ApplicationRecord
   has_many :reviews, dependent: :destroy
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "favorite_gym_id",
+                                   dependent:   :destroy
+  has_many :guest_users, through: :passive_relationships
+
   default_scope -> { order(created_at: :desc) }
   has_one_attached :gym_image
   validate  :validate_gym_image

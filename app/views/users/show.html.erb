@@ -4,7 +4,25 @@
 <p>プロフィール : <%= @user.profile %></p>
 <p><% if @user.image.attached? %>
   <%= image_tag @user.thumbnail %>
-<% end %></p>
+<% end %></p>i
+
+<div class="stats">
+  <a>
+    <strong id="favorite_gym" class="stat">
+      <%= @user.favorite_gyms.count %>
+    </strong>
+    ホームジム
+  </a>
+</div>
+<% if @gyms.any? %>
+  <div class="gym_avatars">
+    <% @gyms.each do |gym| %>
+      <% if gym.gym_image.attached? %>
+        <%= link_to image_tag(gym.gym_image_resize("30x30")), gym %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
 
 <% if user_signed_in? && @user == current_user %>
   <div class="row">
@@ -21,6 +39,24 @@
   </div>
 <% end %>
 
+<ul class="posts">
+  <% @feed_items.each do |feed| %>
+    <h4 class="list-group-item-heading">
+      <%= link_to feed.user.name, feed.user %>
+    </h4>
+    <p class="list-group-item-text">
+      <%= feed.comment %>
+    </p>
+    <p class="list-group-item-text">
+      Posted <%= time_ago_in_words(feed.created_at) %> ago.
+      <% if current_user == feed.user %>
+        <%= link_to "delete", feed, method: :delete,
+                                    data: { confirm: "コメントを削除しますか？" } %>
+      <% end %>
+    </p>
+  <% end %>
+  <%= paginate @feed_items %>
+</ul>
 
 <ul class="reviews">
   <% @reviews.each do |review| %>

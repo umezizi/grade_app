@@ -45,5 +45,7 @@ module GradeApp
       # fixtureの代わりにfactory_botを使うよう設定
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
+
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

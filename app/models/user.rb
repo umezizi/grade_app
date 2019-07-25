@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :posts, dependent: :destroy
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "guest_user_id",
+                                  dependent:   :destroy
+  has_many :favorite_gyms, through: :active_relationships
   has_one_attached :image
   validate  :validate_image
   validates :name, presence: true
@@ -40,6 +44,21 @@ class User < ApplicationRecord
                  content_type: file.content_type_parse.first)
   end
 
+  def feed
+    Post.where("user_id = ?", id)
+  end
+
+  def like(gym)
+    favorite_gyms << gym
+  end
+
+  def unlike(gym)
+    active_relationships.find_by(favorite_gym_id: gym.id).destroy
+  end
+
+  def favorite?(gym)
+    favorite_gyms.include?(gym)
+  end
 
   private
 
