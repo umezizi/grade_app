@@ -45,6 +45,10 @@
     </p>
     <p class="list-group-item-text">
       Posted <%= time_ago_in_words(post.created_at) %> ago.
+      <% if current_user == post.user %>
+        <%= link_to "delete", post, method: :delete,
+                                    data: { confirm: "コメントを削除しますか？" } %>
+      <% end %>
     </p>
   <% end %>
   <%= paginate @posts %>
