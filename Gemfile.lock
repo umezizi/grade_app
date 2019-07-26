@@ -81,6 +81,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.3)
+    bullet (6.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     capybara (3.25.0)
       addressable
@@ -323,6 +326,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
+    uniform_notifier (1.12.1)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -346,6 +350,7 @@ DEPENDENCIES
   aws-ses
   bootsnap (>= 1.1.0)
   bootstrap-sass
+  bullet
   byebug
   capybara
   coffee-rails (~> 4.2)

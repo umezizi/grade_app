@@ -30,8 +30,8 @@ class User < ApplicationRecord
   end
 
   # プロフィール画像のリサイズ
-  def thumbnail
-    return self.image.variant(resize: '300x300').processed
+  def user_image_resize(size)
+    return self.image.variant(resize: size).processed
   end
 
   # URLから画像を取得
@@ -45,7 +45,11 @@ class User < ApplicationRecord
   end
 
   def feed
-    Post.where("user_id = ?", id)
+    guest_users_ids = "SELECT guest_user_id FROM relationships
+                     WHERE favorite_gym_id IN (SELECT favorite_gym_id FROM relationships
+                                                      WHERE guest_user_id = :user_id)"
+    Post.where("user_id IN (#{guest_users_ids})
+                     OR user_id = :user_id", user_id: id)
   end
 
   def like(gym)

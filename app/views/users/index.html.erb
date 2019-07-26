@@ -4,6 +4,9 @@
   <% @users.each do |user| %>
     <%= link_to(user, class: 'list-group-item') do %>
       <h4 class="list-group-item-heading">
+        <% if user.image.attached? %>
+          <%= image_tag user.user_image_resize("60x60") %>
+        <% end %>
         <%= user.name %>
         <% if current_user.admin? && !(current_user == user) %>
          | <%= link_to "delete", user, method: :delete,

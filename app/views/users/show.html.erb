@@ -3,8 +3,8 @@
 <p>メールアドレス : <%= @user.email %></p>
 <p>プロフィール : <%= @user.profile %></p>
 <p><% if @user.image.attached? %>
-  <%= image_tag @user.thumbnail %>
-<% end %></p>i
+  <%= image_tag @user.user_image_resize("300x300") %>
+<% end %></p>
 
 <div class="stats">
   <a>
@@ -89,4 +89,30 @@
   <% end %>
   <%= paginate @posts %>
 </ul>
+
+<ul class="gym">
+  <% @gyms.each do |gym| %>
+    <% if gym.gym_image.attached? %>
+      <%= link_to image_tag(gym.gym_image_resize("60x60")), gym %>
+    <% end %>
+    <h4 class="list-group-item-heading">
+      <%= link_to gym.gym_name, gym %>
+    </h4>
+    <p class="list-group-item-text">
+      <%= gym.address %>
+    </p>
+    <p class="list-group-item-text">
+      <% if current_user == @user %>
+        <div id="like_form">
+          <%= form_for(current_user.active_relationships.find_by(favorite_gym_id: gym.id),
+                       html: { method: :delete }) do |f| %>
+            <%= f.submit "ホームジム解除", class: "btn" %>
+          <% end %>
+        </div>
+      <% end %>
+    </p>
+  <% end %>
+  <%= paginate @posts %>
+</ul>
+
 

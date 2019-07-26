@@ -8,15 +8,15 @@ class UsersController < ApplicationController
   MAX_ITEMS   = 5
 
   def index
-    @users = User.page(params[:page]).per(MAX_USERS)
+    @users = User.includes(image_attachment: :blob).page(params[:page]).per(MAX_USERS)
   end
 
   def show
     @user = User.find(params[:id])
     @post = current_user.posts.build
-    @feed_items = current_user.feed.page(params[:page]).per(MAX_ITEMS)
+    @feed_items = current_user.feed.includes(:user).page(params[:page]).per(MAX_ITEMS)
 
-    @gyms    = @user.favorite_gyms
+    @gyms    = @user.favorite_gyms.includes(gym_image_attachment: :blob)
     @reviews = @user.reviews.page(params[:page]).per(MAX_REVIEWS)
     @posts   = @user.posts.page(params[:page]).per(MAX_POSTS)
   end

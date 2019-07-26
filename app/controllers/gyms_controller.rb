@@ -7,11 +7,12 @@ class GymsController < ApplicationController
 
   def index
     @q    = Gym.ransack(params[:q])
-    @gyms = @q.result.includes(:gym_image_attachment).page(params[:page]).per(MAX_GYMS)
+    @gyms = @q.result.includes(gym_image_attachment: :blob).page(params[:page]).per(MAX_GYMS)
   end
 
   def show
     @gym = Gym.find(params[:id])
+    @users   = @gym.guest_users
     @reviews = @gym.reviews.page(params[:page]).per(MAX_REVIEWS)
 
     @grade       = Review.rating_average(@gym.id, :grade)

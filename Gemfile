@@ -27,6 +27,7 @@ gem 'kaminari', '~> 0.17.0'
 gem 'ransack'
 gem "gmaps4rails"
 gem "geocoder"
+gem 'bullet'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

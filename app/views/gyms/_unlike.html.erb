@@ -1,5 +1,4 @@
 <%= form_for(current_user.active_relationships.find_by(favorite_gym_id: @gym.id),
-            html: { method: :delete },
-            remote: true) do |f| %>
+            html: { method: :delete }) do |f| %>
   <%= f.submit "ホームジム解除", class: "btn" %>
 <% end %>
