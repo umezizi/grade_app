@@ -26,9 +26,8 @@ class Gym < ApplicationRecord
 
     # アップロード画像について、3MB以下 かつ jpeg,pngファイルのみ許可
     def validate_gym_image
-      if !gym_image.attached?
-        errors.add(:gym_image, 'ファイルが指定されていません')
-      elsif gym_image.blob.byte_size > 3.megabytes
+      return unless gym_image.attached?
+      if gym_image.blob.byte_size > 3.megabytes
         gym_image.purge
         errors.add(:gym_image, 'エラー ファイルサイズは3MBが上限です')
       elsif !image_type?

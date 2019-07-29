@@ -6,6 +6,8 @@
       <h4 class="list-group-item-heading">
         <% if user.image.attached? %>
           <%= image_tag user.user_image_resize("60x60") %>
+        <% else %>
+          <%= image_tag("avatar_image.png", :size => "60x60") %>
         <% end %>
         <%= user.name %>
         <% if current_user.admin? && !(current_user == user) %>

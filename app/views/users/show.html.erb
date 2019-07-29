@@ -5,7 +5,7 @@
 <p>
 <% if @user.image.attached? %>
   <%= image_tag @user.user_image_resize("300x300") %>
-<% else%>
+<% else %>
   <%= image_tag("avatar_image.png", :size => "300x300") %>
 <% end %>
 </p>
@@ -23,6 +23,8 @@
     <% @gyms.each do |gym| %>
       <% if gym.gym_image.attached? %>
         <%= link_to image_tag(gym.gym_image_resize("30x30")), gym %>
+      <% else %>
+        <%= link_to image_tag("gym_image.jpg", :size => "30x30"), gym %>
       <% end %>
     <% end %>
   </div>

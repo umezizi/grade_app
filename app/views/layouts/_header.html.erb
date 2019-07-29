@@ -1,24 +1,55 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "GradeShare", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <% if current_user.admin? %>
-            <li><%= link_to "ジム追加", new_gym_path %></li>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/" >Grade Share</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="Navber">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "HOME", root_path, class: "nav-link" %></a>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ABOUT", about_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "MY PAGE", current_user, class: "nav-link" %></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if current_user.image.attached? %>
+                  <%= image_tag current_user.user_image_resize("30x30") %> <b class="caret"></b>
+                <% else %>
+                  <%= image_tag("avatar_image.png", :size => "30x30") %> <b class="caret"></b>
+                <% end %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "ジム追加", new_gym_path, class:"dropdown-item" %>
+                <%= link_to "ユーザー一覧", users_path, class:"dropdown-item" %>
+                <%= link_to "設定", edit_user_registration_path, class:"dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %></a>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "HOME", root_path, class: "nav-link" %></a>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ABOUT",about_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            </li>
           <% end %>
-          <li><%= link_to "About",   about_path %></li>
-          <li><%= link_to "ユーザー一覧", users_path %></li>
-          <li><%= link_to current_user.name, current_user %></li>
-          <li><%= link_to "プロフィール変更", edit_user_registration_path %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path,
-                                                          method: :delete %></li>
-        <% else %>
-          <li><%= link_to "About",   about_path %></li>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
 </header>
