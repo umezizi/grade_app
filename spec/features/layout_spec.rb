@@ -11,7 +11,7 @@ RSpec.feature "Layouts", type: :feature do
     end
 
     it "リンク確認 root" do
-      expect(page).to have_link 'About', href: about_path
+      expect(page).to have_link 'ABOUT', href: about_path
     end
   end
 

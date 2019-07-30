@@ -18,13 +18,13 @@ RSpec.feature "Signins", type: :feature do
     click_button "Log in"
     expect(current_path).to eq root_path
     # expect(page).to_not have_link user.name         ,  href: user_path
-    expect(page).to     have_link 'プロフィール変更',  href: edit_user_registration_path
+    expect(page).to     have_link '設定',  href: edit_user_registration_path
     expect(page).to     have_link 'ログアウト'      ,  href: destroy_user_session_path
     click_link "ログアウト"
     # expect(current_path).to eq destroy_user_session_path
     # expect(current_path).to eq root_path
     # expect(page).to have_link user.name         ,  href: user_path
-    expect(page).to_not     have_link 'プロフィール変更',  href: edit_user_registration_path
+    expect(page).to_not     have_link '設定',  href: edit_user_registration_path
     expect(page).to_not     have_link 'ログアウト'      ,  href: destroy_user_session_path
   end
 end

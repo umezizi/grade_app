@@ -1,7 +1,3 @@
-/* mixins, variables, etc. */
-$gray: #eaeaea;
-$gray-darker: #eaeaea;
-$gray-medium-light: #eaeaea;
 
 :root {
   --blue: #007bff;
@@ -25,22 +21,6 @@ $gray-medium-light: #eaeaea;
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
-}
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
-}
-
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
 }
 
 /* universal */
@@ -124,6 +104,14 @@ a:hover {
 
 /* header */
 
+nav {
+  img {
+      border-radius: 50%;
+      width:  30px;
+      height: 30px;
+  }
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -139,27 +127,32 @@ a:hover {
   }
 }
 
+
 /* footer */
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
+  border-top: 1px solid gray;
   small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
+    float: center;
   }
 }
+
+
+/* home */
+
+.jumbotron {
+  background-image: url("PAK55_borudaringkabe.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  overflow: hidden;
+  position: relative;
+  height: 45vh;
+}
+
+.jumbotron-heading {
+  color: white;
+  font-weight: bold;
+}
+

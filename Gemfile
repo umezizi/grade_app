@@ -29,6 +29,7 @@ gem 'ransack'
 gem "gmaps4rails"
 gem "geocoder"
 gem 'bullet'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

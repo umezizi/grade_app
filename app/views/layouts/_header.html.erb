@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/" >Grade Share</a>
+      <a class="navbar-brand" id=logo href="/" >Grade Share</a>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,13 +10,19 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "HOME", root_path, class: "nav-link" %></a>
+              <%= link_to root_path, class: "nav-link" do %>
+                <i class="fas fa-home fa-fw"></i>HOME
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ABOUT", about_path, class: "nav-link" %>
+              <%= link_to about_path, class: "nav-link" do %>
+                <i class="fas fa-chalkboard-teacher fa-fw"></i>ABOUT
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "MY PAGE", current_user, class: "nav-link" %></a>
+              <%= link_to current_user, class: "nav-link" do %>
+                <i class="far fa-comments fa-fw"></i>COMMENTS
+              <% end %>
             </li>
             <li class="nav-item dropdown">
               <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,16 +42,24 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "HOME", root_path, class: "nav-link" %></a>
+              <%= link_to root_path, class: "nav-link" do %>
+                <i class="fas fa-home fa-fw"></i>HOME
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ABOUT",about_path, class: "nav-link" %>
+              <%= link_to about_path, class: "nav-link" do %>
+                <i class="fas fa-chalkboard-teacher fa-fw"></i>ABOUT
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                <i class="fas fa-user-plus fa-fw"></i>SIGN UP
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                <i class="fas fa-sign-in-alt fa-fw"></i>LOGIN
+              <% end %>
             </li>
           <% end %>
         </ul>
