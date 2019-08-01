@@ -5,7 +5,7 @@ class Gym < ApplicationRecord
                                    dependent:   :destroy
   has_many :guest_users, through: :passive_relationships
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
   has_one_attached :gym_image
   validate  :validate_gym_image
   validates :gym_name, presence: true, length: { maximum: 50 },
@@ -19,7 +19,10 @@ class Gym < ApplicationRecord
 
   # ジム画像のリサイズ
   def gym_image_resize(size)
-    return self.gym_image.variant(resize: size).processed
+    # return self.gym_image.variant(resize: size).processed
+    return self.gym_image.variant(combine_options:{
+                          resize:"#{size}>", extent: size,
+                          background: "white", gravity: :center}).processed
   end
 
   private
