@@ -1,72 +1,114 @@
-<h1>Gyms#show</h1>
-<% if user_signed_in? %>
-  <div id="like_form">
-    <% if current_user.favorite?(@gym) %>
-      <%= render 'unlike' %>
-    <% else %>
-      <%= render 'like' %>
-    <% end %>
-  </div>
-<% end %>
-<p> ジム名 : <%= @gym.gym_name %></p>
-<p>詳細 : <%= @gym.details %></p>
-<p>
-<% if @gym.gym_image.attached? %>
-  <%= image_tag @gym.gym_image_resize("400x400") %>
-<% else %>
-  <%= image_tag("gym_image.jpg", :size => "400x400") %>
-<% end %>
-</p>
+<% provide(:title, @gym.gym_name) %>
+<div class="py-5 bg-light mb-0">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2><strong><%= @gym.gym_name %></strong></h2>
+    </div>
 
-<div id="map" style='width: 100%; height: 500px;'></div>
+    <div class="row mb-4 p-4">
+      <div class="col-md-6 float-left">
+        <% if @gym.gym_image.attached? %>
+          <%= image_tag(@gym.gym_image_resize("500x333"), class:"img-responsive") %>
+        <% else %>
+          <%= image_tag("gym_image.jpg", :size => "500x333", class:"img-responsive") %>
+        <% end %>
+      </div>
+      <div class="col-md-6 float-right">
+        <div id="map" style='width: 100%; height: 333px;'></div>
+      </div>
+    </div>
 
+    <div class="bg-white p-4 mb-4">
+      <p>所在地：<%= @gym.address %></p>
+      <p>備　考：<%= @gym.details %></p>
+      <div class="text-right">
+        <% if user_signed_in? && current_user.admin? %>
+          <%= link_to edit_gym_path, class: 'btn btn-info' do %>
+            <i class="fas fa-edit"></i><span>編集</span>
+          <% end %>
+          <% if  current_user.admin? %>
+            <%= link_to @gym, method: :delete,
+                                  data: { confirm: "ジムを削除しますか？" },
+                                  class: 'btn btn-info' do %>
+               <i class="fas fa-trash-alt"></i><span>ジム削除</span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-<p>
-<% if user_signed_in? && current_user.admin? %>
-  <%= link_to "編集",   edit_gym_path %>
-  <%= link_to "delete", @gym, method: :delete,
-                        data: { confirm: "ジムを削除しますか？" } %>
-<% end %>
-</p>
-<p>グレード：<%= @grade %> </p>
-<p>広さ：<%= @breadth %> </p>
-<p>壁の高さ：<%= @wall_height %> </p>
-<p>混雑度：<%= @congestion %> </p>
+    <div class="bg-white p-4 mb-4">
+      <div><h4>REVIEW SCORE</h4></div>
+      <div class="row block-center text-center">
+        <ul style="list-style:none;" class="col">
+          <li><%= content_tag(:span, @grade, class: "score") %></li>
+          <li>難易度</li>
+        </ul>
+        <ul style="list-style:none;" class="col">
+          <li><%= content_tag(:span, @breadth, class: "score") %></li>
+          <li>広さ</li>
+        </ul>
+        <ul style="list-style:none;" class="col">
+          <li><%= content_tag(:span, @wall_height, class: "score") %></li>
+          <li>壁の高さ</li>
+        </ul>
+        <ul style="list-style:none;" class="col">
+          <li><%= content_tag(:span, @congestion, class: "score") %></li>
+          <li>混雑度</li>
+        </ul>
+      </div>
+      <div class="text-right"><small>※スコアは５段階評価の平均</small></div>
+    </div>
 
-<% if @users.any? %>
-  <div class="user_avatars">
-    <% @users.each do |user| %>
-      <% if user.image.attached? %>
-        <%= link_to image_tag(user.user_image_resize("60x60")), user %>
-      <% else %>
-        <%= link_to image_tag("avatar_image.png", :size => "60x60"), user %>
+    <div class="bg-white p-4 mb-4">
+      <div><h4> MEMBERS</h4></div>
+      <% if @users.any? %>
+        <div class="user_avatars">
+          <% @users.each do |user| %>
+            <% if user.image.attached? %>
+               <%= image_tag user.user_image_resize("60x60") %>
+            <% else %>
+               <%= image_tag("avatar_image.png", :size => "60x60") %>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
-
-
-
-<ul class="reviews">
-  <% @reviews.each do |review| %>
-    <h4 class="list-group-item-heading">
-      <%= review.title %>
-      <% if current_user.id == review.user_id || current_user.admin? %>
-       | <%= link_to "delete", gym_review_path(@gym,review), method: :delete,
-                                data: { confirm: "レビューを削除しますか？" } %>
+      <% if user_signed_in? %>
+        <div id="like_form" class="text-right mb-4">
+          <% if current_user.favorite?(@gym) %>
+            <%= render 'unlike' %>
+          <% else %>
+            <%= render 'like' %>
+          <% end %>
+        </div>
       <% end %>
-    </h4>
-    <p class="list-group-item-text">
-      <%= review.content %>
-    </p>
-  <% end %>
-  <p>
-  <% if user_signed_in? %>
-    <span><%= link_to "レビューする", new_gym_review_path(@gym) %></span>
-  <% end %>
-  </p>
-  <%= paginate @reviews %>
-</ul>
+    </div>
+
+
+
+
+    <ul class="reviews">
+      <% @reviews.each do |review| %>
+        <h4 class="list-group-item-heading">
+          <%= review.title %>
+          <% if current_user.id == review.user_id || current_user.admin? %>
+           | <%= link_to "delete", gym_review_path(@gym,review), method: :delete,
+                                    data: { confirm: "レビューを削除しますか？" } %>
+          <% end %>
+        </h4>
+        <p class="list-group-item-text">
+          <%= review.content %>
+        </p>
+      <% end %>
+      <p>
+      <% if user_signed_in? %>
+        <span><%= link_to "レビューする", new_gym_review_path(@gym) %></span>
+      <% end %>
+      </p>
+      <%= paginate @reviews %>
+    </ul>
+  </div>
+</div>
 
 
 <script type="text/javascript">

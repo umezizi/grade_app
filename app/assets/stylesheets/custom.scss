@@ -160,3 +160,20 @@ footer {
   font-weight: bold;
 }
 
+/* gym page */
+
+.score {
+  border: medium solid #ff8c00;
+  border-radius: 10px;
+  background-color: #ff8c00;
+  color:  white;
+  font-size: 2em;
+}
+
+.user_avatars {
+  img {
+      border-radius: 50%;
+      width:  60px;
+      height: 60px;
+  }
+}

@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   def self.rating_average(gym_id, column)
     rate = self.where(gym_id: gym_id).average(column)
     if rate.nil?
-      rate = "-"
+      rate = "---"
     else
       rate.floor(1)
     end

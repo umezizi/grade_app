@@ -1,4 +1,4 @@
 <%= form_for(current_user.active_relationships.build) do |f| %>
   <div><%= hidden_field_tag :favorite_gym_id, @gym.id %></div>
-  <%= f.submit "ホームジム登録", class: "btn btn-primary" %>
+  <%= f.submit "ホームジム登録", class: "btn btn-info ml-auto mr-2" %>
 <% end %>
