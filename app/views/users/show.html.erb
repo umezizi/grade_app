@@ -1,49 +1,46 @@
-<h1>Users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
-<p>
-<% if @user.image.attached? %>
-  <%= image_tag @user.user_image_resize("300x300") %>
-<% else %>
-  <%= image_tag("avatar_image.png", :size => "300x300") %>
-<% end %>
-</p>
-
-<div class="stats">
-  <a>
-    <strong id="favorite_gym" class="stat">
-      <%= @user.favorite_gyms.count %>
-    </strong>
-    ホームジム
-  </a>
-</div>
-<% if @gyms.any? %>
-  <div class="gym_avatars">
-    <% @gyms.each do |gym| %>
-      <% if gym.gym_image.attached? %>
-        <%= link_to image_tag(gym.gym_image_resize("30x30")), gym %>
-      <% else %>
-        <%= link_to image_tag("gym_image.jpg", :size => "30x30"), gym %>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
-
-<% if user_signed_in? && @user == current_user %>
+<% provide(:title, @user.name) %>
+<div class="container bg-light">
   <div class="row">
     <aside class="col-md-4">
-      <section>
-        <%= form_for(@post) do |f| %>
-          <div class="field">
-            <%= f.text_area :comment, placeholder: "つぶやく..." %>
+      <section class="user_info">
+        <p>
+          <% if @user.image.attached? %>
+            <%= image_tag @user.user_image_resize("250x250") %>
+          <% else %>
+            <%= image_tag("avatar_image.png", :size => "250x250") %>
+          <% end %>
+        </p>
+        <p><strong><%= @user.name %><strong></p>
+      </section>
+      <section class="stats">
+        <p><%= @user.profile %></p>
+        <p>ホームジム</p>
+        <% if @gyms.any? %>
+          <div class="gym_avatars">
+            <% @gyms.each do |gym| %>
+              <% if gym.gym_image.attached? %>
+                <%= link_to image_tag(gym.gym_image_resize("60x60")), gym %>
+              <% else %>
+                <%= link_to image_tag("gym_image.jpg", :size => "60x60"), gym %>
+              <% end %>
+            <% end %>
           </div>
-          <%= f.submit "コメント", class: "btn btn-primary" %>
         <% end %>
       </section>
     </aside>
+    <div class="col-md-8">
+      <%= render 'post_form' if user_signed_in? && @user == current_user %>
+      <% if @user.posts.any? %>
+        <h3>Microposts (<%= @user.microposts.count %>)</h3>
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+        <%= paginate @posts %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
+
 
 <ul class="posts">
   <% @feed_items.each do |feed| %>

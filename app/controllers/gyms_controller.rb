@@ -12,8 +12,8 @@ class GymsController < ApplicationController
 
   def show
     @gym = Gym.find(params[:id])
-    @users   = @gym.guest_users
-    @reviews = @gym.reviews.page(params[:page]).per(MAX_REVIEWS)
+    @users   = @gym.guest_users.includes(image_attachment: :blob)
+    @reviews = @gym.reviews.includes(:user).page(params[:page]).per(MAX_REVIEWS)
 
     @grade       = Review.rating_average(@gym.id, :grade)
     @breadth     = Review.rating_average(@gym.id, :breadth)

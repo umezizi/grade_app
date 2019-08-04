@@ -177,3 +177,22 @@ footer {
       height: 60px;
   }
 }
+
+.reviews {
+  li {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid gray;
+    &:last-child {
+      border-bottom: none;
+    }
+    p {
+      margin-bottom: 0.5em;
+    }
+  }
+  img {
+      border-radius: 50%;
+      width:  60px;
+      height: 60px;
+  }
+}
