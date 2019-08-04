@@ -1,42 +1,77 @@
 <% provide(:title, @user.name) %>
-<div class="container bg-light">
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <p>
-          <% if @user.image.attached? %>
-            <%= image_tag @user.user_image_resize("250x250") %>
-          <% else %>
-            <%= image_tag("avatar_image.png", :size => "250x250") %>
-          <% end %>
-        </p>
-        <p><strong><%= @user.name %><strong></p>
-      </section>
-      <section class="stats">
-        <p><%= @user.profile %></p>
-        <p>ホームジム</p>
-        <% if @gyms.any? %>
-          <div class="gym_avatars">
-            <% @gyms.each do |gym| %>
-              <% if gym.gym_image.attached? %>
-                <%= link_to image_tag(gym.gym_image_resize("60x60")), gym %>
-              <% else %>
-                <%= link_to image_tag("gym_image.jpg", :size => "60x60"), gym %>
-              <% end %>
+<div class="bg-light pt-4 mb-0 comments">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-4">
+        <section class="user_info p-3">
+          <div class="text-center mb-2">
+            <% if @user.image.attached? %>
+              <%= image_tag @user.user_image_resize("250x250") %>
+            <% else %>
+              <%= image_tag("avatar_image.png", :size => "250x250") %>
             <% end %>
           </div>
-        <% end %>
-      </section>
-    </aside>
-    <div class="col-md-8">
-      <%= render 'post_form' if user_signed_in? && @user == current_user %>
-      <% if @user.posts.any? %>
-        <h3>Microposts (<%= @user.microposts.count %>)</h3>
-        <ol class="microposts">
-          <%= render @microposts %>
-        </ol>
-        <%= paginate @posts %>
-      <% end %>
+          <p class="text-center profile_item pb-2 mb-3">
+            <strong><%= @user.name %></strong>
+          </p>
+          <div class="profile_item pb-2 mb-3">
+            <h6><i class="fas fa-id-badge"></i> PROFILE</h6>
+            <%= @user.profile %>
+            <div class="text-right">
+               <small><%= link_to "プロフィール編集",
+                  edit_user_registration_path, class: "text-info" %></small>
+            </div>
+          </div>
+          <% if @gyms.any? %>
+            <h6><i class="fas fa-dumbbell"></i> HOME GYM</h6>
+            <div>
+              <% @gyms.each do |gym| %>
+                <% if gym.gym_image.attached? %>
+                  <%= link_to image_tag(gym.gym_image_resize("60x60")), gym %>
+                <% else %>
+                  <%= link_to image_tag("gym_image.jpg", :size => "60x60"), gym %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </section>
+      </aside>
+
+      <div class="col-md-8">
+        <%= render 'post_form' if user_signed_in? && @user == current_user %>
+        <div class="timeline mt-4">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a href="#tab1" class="nav-link" data-toggle="tab">タイムライン</a>
+            </li>
+            <li class="nav-item">
+              <a href="#tab2" class="nav-link" data-toggle="tab">コメント</a>
+            </li>
+            <li class="nav-item">
+              <a href="#tab3" class="nav-link" data-toggle="tab">レビュー</a>
+            </li>
+            <li class="nav-item">
+              <a href="#tab4" class="nav-link" data-toggle="tab">ホームジム</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="tab1" class="tab-pane p-2 active">
+               <%= render "feed_view" if @feed_items.any? %>
+            </div>
+            <div id="tab2" class="tab-pane p-2">
+               <%= render "post_view" if @posts.any? %>
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/221808/photo2.jpg" alt="" class="img-fluid">
+            </div>
+            <div id="tab3" class="tab-pane p-2">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/221808/photo3.jpg" alt="" class="img-fluid">
+            </div>
+            <div id="tab4" class="tab-pane p-2">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/221808/photo4.jpg" alt="" class="img-fluid">
+            </div>
+          </div>
+          <%= paginate @posts %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

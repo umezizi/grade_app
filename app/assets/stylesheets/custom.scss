@@ -191,8 +191,50 @@ footer {
     }
   }
   img {
-      border-radius: 50%;
-      width:  60px;
-      height: 60px;
+    border-radius: 50%;
+    width:  60px;
+    height: 60px;
+  }
+}
+
+
+/* commetes */
+
+.comments {
+  img {
+    border-radius: 50%;
+  }
+  textarea {
+    height: 2.5em;
+  }
+}
+
+.user_info {
+  background-color: white;
+}
+
+.timeline {
+  background-color: white;
+}
+
+.profile_item {
+  border-bottom: 1px solid gray;
+}
+
+.comment_items {
+  ul {
+    padding-left: 1em;
+  }
+  li {
+    width: 100%;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid gray;
+    &:last-child {
+      border-bottom: none;
+    }
+    p {
+      margin-bottom: 0.5em;
+    }
   }
 }

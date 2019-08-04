@@ -1,0 +1,30 @@
+<ul style="list-style:none;" class="comment_items">
+  <% @feed_items.each do |feed| %>
+    <li class="row">
+      <div class="col-md-2 float-left inline-block">
+        <% if feed.user.image.attached? %>
+          <%= link_to image_tag(feed.user.user_image_resize("60x60")),
+                                                        feed.user %>
+        <% else %>
+          <%= link_to image_tag("avatar_image.png", :size => "60x60"),
+                                                        feed.user %>
+        <% end %>
+      </div>
+      <div class="col-md-9 inline-block">
+        <p><%= feed.comment %></p>
+        <p class="text-secondary">
+          <small>
+            投稿者：<%= feed.user.name %>  投稿時間：<%= feed.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>
+          </small>
+          <% if current_user == feed.user || current_user.admin? %>
+            <%= link_to feed, method: :delete, class: "text-secondary",
+                              data: { confirm: "コメントを削除しますか？" } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<%= paginate @feed_items %>
