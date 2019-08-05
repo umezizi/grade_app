@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to request.referrer || user_path(current_user)
+    redirect_back(fallback_location: user_path(current_user))
   end
 
   private

@@ -58,8 +58,4 @@ class GymsController < ApplicationController
       params.require(:gym).permit(:gym_name, :details, :gym_image,
                                   :prefecture, :address, :latitude, :longitude)
     end
-
-    # def search_params
-    #   params.require(:q).permit!
-    # end
 end

@@ -1,28 +1,3 @@
-
-:root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-}
-
 /* universal */
 
 html {
@@ -45,17 +20,6 @@ body {
 
 section {
   overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
 }
 
 /* typography */
@@ -179,7 +143,12 @@ footer {
 }
 
 .reviews {
+  ul {
+    padding-left: 1em;
+    list-style:  none;
+  }
   li {
+    width: 100%;
     margin-top: 1em;
     margin-bottom: 1em;
     border-bottom: 1px solid gray;
@@ -214,27 +183,58 @@ footer {
 }
 
 .timeline {
-  background-color: white;
+  .nav-link {
+    color: #17a2b8;
+  }
+  .active {
+    background-color: white;
+  }
+  .tab-content {
+    background-color: white;
+  }
 }
 
 .profile_item {
   border-bottom: 1px solid gray;
 }
 
-.comment_items {
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post_items {
   ul {
     padding-left: 1em;
+    list-style:  none;
   }
   li {
     width: 100%;
-    margin-top: 1em;
-    padding-bottom: 1em;
+    margin-top: 0.5em;
+    padding-bottom: 0.5em;
     border-bottom: 1px solid gray;
     &:last-child {
       border-bottom: none;
     }
     p {
       margin-bottom: 0.5em;
+    }
+  }
+}
+
+
+.home_gyms {
+  ul {
+    padding-left: 1em;
+    list-style:  none;
+  }
+  li {
+    width: 100%;
+    margin-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid gray;
+    &:last-child {
+      border-bottom: none;
     }
   }
 }

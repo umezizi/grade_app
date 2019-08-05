@@ -3,22 +3,25 @@ class UsersController < ApplicationController
   before_action :admin_user?, only: :destroy
 
   MAX_USERS   = 10
-  MAX_REVIEWS = 5
-  MAX_POSTS   = 5
-  MAX_ITEMS   = 5
+  MAX_REVIEWS = 8
+  MAX_POSTS   = 10
+  MAX_ITEMS   = 10
+  MAX_GYMS    = 15
 
   def index
     @users = User.includes(image_attachment: :blob).page(params[:page]).per(MAX_USERS)
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(image_attachment: :blob).find(params[:id])
     @post = current_user.posts.build
-    @feed_items = current_user.feed.includes(:user).page(params[:page]).per(MAX_ITEMS)
 
-    @gyms    = @user.favorite_gyms.includes(gym_image_attachment: :blob)
-    @reviews = @user.reviews.page(params[:page]).per(MAX_REVIEWS)
+    @feed_items = current_user.feed.includes(user: [image_attachment: :blob])
+                                           .page(params[:page]).per(MAX_ITEMS)
     @posts   = @user.posts.page(params[:page]).per(MAX_POSTS)
+    @reviews = @user.reviews.includes(:gym).page(params[:page]).per(MAX_REVIEWS)
+    @gyms    = @user.favorite_gyms.includes(gym_image_attachment: :blob)
+                                           .page(params[:page]).per(MAX_GYMS)
   end
 
   def destroy

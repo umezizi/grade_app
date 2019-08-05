@@ -1,0 +1,25 @@
+<ul class="home_gyms">
+  <% @gyms.each do |gym| %>
+    <li class="row">
+      <div class="col-md-2 float-left inline-block">
+        <% if gym.gym_image.attached? %>
+          <%= link_to image_tag(gym.gym_image_resize("60x60")), gym %>
+        <% else %>
+          <%= link_to image_tag("gym_image.jpg", :size => "60x60"), gym %>
+        <% end %>
+      </div>
+      <div class="col-md-10 inline-block flex-container pt-3">
+        <div>
+          <h5><%= gym.gym_name %></h5>
+        </div>
+        <div>
+          <%= form_for(current_user.active_relationships.find_by(favorite_gym_id: gym.id),
+                                          html: { method: :delete }) do |f| %>
+            <%= f.submit "ホームジム解除", class: "btn btn-info ml-auto mr-2" %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<%= paginate @gyms %>

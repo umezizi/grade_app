@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
   def destroy
     @gym = Gym.find(params[:gym_id])
     Review.find(params[:id]).destroy
-    redirect_to gym_path(@gym)
+    redirect_back(fallback_location: root_path)
   end
 
   private

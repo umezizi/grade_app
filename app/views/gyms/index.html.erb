@@ -2,7 +2,9 @@
 <section class="jumbotron jumbotron-fluid text-center mb-0">
   <div class="container">
     <h1 class="jumbotron-heading">Grade share</h1>
-    <p class="lead text-white">クライミングジムのレビュー＆クライマー向けコミュニティサービス</p>
+    <p class="lead text-white">
+      クライミングジムのレビュー＆クライマー向けコミュニティサービス
+    </p>
     <p>
       <% if !user_signed_in? %>
         <a href="/users/sign_up" class="btn btn-info my-2">はじめる</a>
@@ -20,8 +22,11 @@
     <p>
       <%= search_form_for(@q, url:gyms_path) do |f| %>
         <div class="form-inline">
-          <%= f.search_field :gym_name_cont, class: "form-control col-3 ml-auto mr-sm-2", placeholder: "ジムを検索..."  %>
-          <%= button_tag type: "submit", name: nil, class: "btn  my-2 my-sm-0 btn-info search-btn" do %>
+          <%= f.search_field :gym_name_cont,
+                              class: "form-control col-3 ml-auto mr-sm-2",
+                              placeholder: "ジムを検索..."  %>
+          <%= button_tag type: "submit", name: nil, 
+                              class: "btn  my-2 my-sm-0 btn-info search-btn" do %>
             <i class="fas fa-search"></i>
           <% end %>
         </div>
@@ -33,9 +38,11 @@
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             <% if gym.gym_image.attached? %>
-              <%= link_to image_tag(gym.gym_image_resize("600x400"), class: "card-img-top"), gym_path(gym) %>
+              <%= link_to image_tag(gym.gym_image_resize("600x400"),
+                                    class: "card-img-top"), gym_path(gym) %>
             <% else %>
-              <%= link_to image_tag("gym_image.jpg", class: "card-img-top"), gym_path(gym) %>
+              <%= link_to image_tag("gym_image.jpg",
+                                    class: "card-img-top"), gym_path(gym) %>
             <% end %>
             <div class="card-body mt-0 pt-0">
               <p class="card-text text-info my-1 pb-0" >

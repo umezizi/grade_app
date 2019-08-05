@@ -1,0 +1,33 @@
+<ul class="reviews">
+  <% @reviews.each do |review| %>
+    <li class="row">
+      <div class="col-md-2 float-left inline-block">
+        <% if review.gym.gym_image.attached? %>
+          <%= link_to image_tag(review.gym.gym_image_resize("60x60")),
+                                                        review.gym %>
+        <% else %>
+          <%= link_to image_tag("gym_image.jpg", :size => "60x60"),
+                                                        review.gym %>
+        <% end %>
+        <p><small><%= review.gym.gym_name %></small></p>
+      </div>
+      <div class="col-md-10 inline-block">
+        <p>
+          <h5><%= review.title %></h5>
+        </p>
+        <p><%= review.content %></p>
+        <p class="text-right">
+          <small class="mr-4">難易度：<%= review.grade %>　広さ：<%= review.breadth %>　壁の高さ：<%= review.wall_height %>　混雑度：<%= review.congestion %></small>
+          <% if current_user.id == review.user_id || current_user.admin? %>
+             <%= link_to gym_review_path(review.gym, review),
+                                method: :delete, class:"text-secondary",
+                                data: { confirm: "レビューを削除しますか？" } do %>
+               <i class="fas fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<%= paginate @reviews %>
