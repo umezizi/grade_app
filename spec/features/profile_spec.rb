@@ -13,7 +13,6 @@ RSpec.feature "Profiles", type: :feature do
     click_button "Update"
     expect(current_path).to eq user_path(user)
     expect(page).to have_content "テスト太郎"
-    expect(page).to have_content "test@test.com"
     expect(page).to have_content "プロフィールテスト"
   end
 end

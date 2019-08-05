@@ -40,7 +40,8 @@ class User < ApplicationRecord
 
     file = open(oauth_image_url)
     image.attach(io: file,
-                 filename: "profile_image.#{file.content_type_parse.first.split("/").last}",
+                 filename: "profile_image.
+                                #{file.content_type_parse.first.split("/").last}",
                  content_type: file.content_type_parse.first)
   end
 

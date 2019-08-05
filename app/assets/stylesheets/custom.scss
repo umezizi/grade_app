@@ -65,6 +65,11 @@ a:hover {
   text-decoration: underline;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* pagenation */
 .pagination>li>a {
   border: none;
@@ -198,10 +203,6 @@ footer {
   border-bottom: 1px solid gray;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-}
 
 .post_items {
   ul {
