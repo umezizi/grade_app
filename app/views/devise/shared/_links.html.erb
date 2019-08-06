@@ -7,7 +7,12 @@
 <% end %>
 
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div class="text-right form-layout form-line pb-2">
+    <small>
+      アカウントをお持ちの方は<%= link_to "こちら",
+                    new_session_path(resource_name),class:"text-info" %><br />
+    </small>
+  </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -27,7 +32,12 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
-  <% end %>
+  <div class="form-layout">
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to omniauth_authorize_path(resource_name, provider), method: :post,
+                                            class:"btn twitter-btn" do %>
+        <i class="fab fa-twitter"></i>Twitterアカウントでログイン<br />
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
