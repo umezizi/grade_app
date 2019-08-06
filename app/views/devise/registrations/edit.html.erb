@@ -19,6 +19,11 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field form-group">
+          <%= f.label :プロフィール画像 %><br />
+          <%= f.file_field :image, class: "form-control-file" %>
+        </div>
+
+        <div class="field form-group">
           <%= f.label :名前 %><br />
           <%= f.text_field :name, autofocus: true,
                                  class: "form-control", autocomplete: "name" %>
@@ -34,28 +39,26 @@
           <%= f.text_area :profile, class: "form-control", autocomplete: "profile" %>
         </div>
 
-        <div class="field">
-          <%= f.label :プロフィール画像 %><br />
-          <%= f.file_field :image, class: "form-control" %>
-        </div>
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
         <div class="field form-group">
           <%= f.label :新しいパスワード %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, class: "form-control",
+                                          autocomplete: "new-password" %>
         </div>
 
         <div class="field form-group">
           <%= f.label :新しいパスワードの確認 %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, class: "form-control",
+                                          autocomplete: "new-password" %>
         </div>
 
         <div class="field form-group">
-          <%= f.label :現在のパスワード %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password" %>
+          <%= f.label :現在のパスワード %><br />
+          <%= f.password_field :current_password, class: "form-control",
+                                          autocomplete: "current-password" %>
         </div>
 
         <div class="actions">
