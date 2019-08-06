@@ -17,10 +17,12 @@
           <div class="profile_item pb-2 mb-3">
             <h6><i class="fas fa-id-badge"></i> PROFILE</h6>
             <%= @user.profile %>
-            <div class="text-right">
-               <small><%= link_to "プロフィール編集",
-                  edit_user_registration_path, class: "text-info" %></small>
-            </div>
+            <% if current_user == @user %>
+              <div class="text-right">
+                 <small><%= link_to "プロフィール編集",
+                    edit_user_registration_path, class: "text-info" %></small>
+              </div>
+            <% end %>
           </div>
           <% if @gyms.any? %>
             <h6><i class="fas fa-dumbbell"></i> HOME GYM</h6>
