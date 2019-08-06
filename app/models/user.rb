@@ -65,6 +65,20 @@ class User < ApplicationRecord
     favorite_gyms.include?(gym)
   end
 
+  # パスワードなしで編集を許可する
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
+
   private
 
     # Oauth認証でユーザー登録する際に使用するユニークなメールアドレスを作成

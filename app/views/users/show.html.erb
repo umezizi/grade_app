@@ -4,7 +4,7 @@
     <div class="row">
       <aside class="col-md-4">
         <section class="user_info p-3">
-          <div class="text-center mb-2">
+          <div class="text-center user-image mb-2">
             <% if @user.image.attached? %>
               <%= image_tag @user.user_image_resize("250x250") %>
             <% else %>
@@ -26,7 +26,7 @@
           </div>
           <% if @gyms.any? %>
             <h6><i class="fas fa-dumbbell"></i> HOME GYM</h6>
-            <div>
+            <div class="home-gym-image">
               <% @gyms.each do |gym| %>
                 <% if gym.gym_image.attached? %>
                   <%= link_to image_tag(gym.gym_image_resize("60x60")), gym %>

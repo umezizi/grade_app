@@ -141,7 +141,7 @@ footer {
 }
 
 .form-line {
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid #a9a9a9;
 }
 
 .twitter-btn {
@@ -209,9 +209,6 @@ footer {
 /* commetes */
 
 .comments {
-  img {
-    border-radius: 50%;
-  }
   textarea {
     height: 2.5em;
   }
@@ -219,9 +216,28 @@ footer {
 
 .user_info {
   background-color: white;
+  .user-image {
+     img {
+       border-radius: 50%;
+       width:  250px;
+       height: 250px;
+    }
+  }
+  .home-gym-image {
+     img {
+       border-radius: 50%;
+       width:   60px;
+       height:  60px;
+    }
+  }
 }
 
 .timeline {
+  img {
+    border-radius: 50%;
+    width:  60px;
+    height: 60px;
+  }
   .nav-link {
     color: #17a2b8;
   }
