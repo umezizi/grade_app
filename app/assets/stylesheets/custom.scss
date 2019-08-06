@@ -112,7 +112,6 @@ footer {
   }
 }
 
-
 /* home */
 
 .jumbotron {
@@ -151,7 +150,15 @@ footer {
   background-color: #55acee;
 }
 
+/* setting */
 
+.setting {
+  img {
+      border-radius: 50%;
+      width:  60px;
+      height: 60px;
+  }
+}
 
 /* gym page */
 

@@ -1,10 +1,17 @@
-<% provide(:title, "設定") %>
+<% provide(:title, "SETTING") %>
 
 <div class="py-5 bg-light mb-0">
   <div class="row justify-content-center align-items-center w-100">
-    <div class="col-md-4 bg-white">
+    <div class="col-md-4 bg-white setting">
       <div class="form-group text-center mt-3">
-        <h2>設定</h2>
+        <h2>SETTING</h2>
+      </div>
+      <div class="form-group text-center mt-3">
+        <% if @user.image.attached? %>
+          <%= image_tag @user.user_image_resize("250x250") %>
+        <% else %>
+          <%= image_tag("avatar_image.png", :size => "250x250") %>
+        <% end %>
       </div>
 
       <%= form_for(resource, as: resource_name,
@@ -24,12 +31,12 @@
 
         <div class="field form-group">
           <%= f.label :プロフィール %><br />
-          <%= f.text_field :profile, autocomplete: "profile" %>
+          <%= f.text_area :profile, class: "form-control", autocomplete: "profile" %>
         </div>
 
         <div class="field">
           <%= f.label :プロフィール画像 %><br />
-          <%= f.file_field :image %>
+          <%= f.file_field :image, class: "form-control" %>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -37,7 +44,7 @@
         <% end %>
 
         <div class="field form-group">
-          <%= f.label :新しいパスワード %> <i>(変更しない場合は何も入力しないでください)</i><br />
+          <%= f.label :新しいパスワード %><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
 
@@ -52,12 +59,14 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "変更", class:"btn-info mb-2" %>
+          <%= f.submit "パスワード変更", class:"btn-info form-control mb-2" %>
         </div>
       <% end %>
 
 
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <%= button_to "アカウント削除", registration_path(resource_name),
+                          data: { confirm: "アカウントを削除しますか？" },
+                       method: :delete, class:"btn-danger form-control mb-2" %>
 
     </div>
   </div>
