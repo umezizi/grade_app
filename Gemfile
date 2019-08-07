@@ -21,15 +21,16 @@ gem 'omniauth-twitter'
 gem 'aws-ses'
 gem 'mini_magick', '~> 4.8'
 gem 'asset_sync'
-gem "fog-aws"
-gem "aws-sdk-s3", require: false
-gem "omniauth-rails_csrf_protection"
+gem 'fog-aws'
+gem 'aws-sdk-s3', require: false
+gem 'omniauth-rails_csrf_protection'
 gem 'kaminari', '1.1.1'
 gem 'ransack'
-gem "gmaps4rails"
-gem "geocoder"
+gem 'gmaps4rails'
+gem 'geocoder'
 gem 'bullet'
 gem 'font-awesome-sass', '~> 5.4.1'
+gem 'jp_prefecture'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

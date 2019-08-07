@@ -1,0 +1,36 @@
+<%= form_for(@gym, url: yield(:url)) do |f| %>
+
+  <div class="field form-group">
+    <%= f.label :ジム名 %>
+    <%= f.text_field :gym_name, autofocus: true, class: "form-control",
+                                                 autocomplete: "name" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :都道府県 %>
+    <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all,
+         :name, :name, {autocomplete: "on"}, {class: "custom-select"} %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, class: "form-control",
+                                                 autocomplete: "address" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :備考 %>
+    <%= f.text_area :details, class: "form-control",
+                                                 autocomplete: "details" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :ジム画像 %>
+    <%= f.file_field :gym_image, class: "form-control-file" %>
+  </div>
+
+  <div class="actions form-group mb-2">
+    <%= f.submit yield(:button_text), class:"btn-info form-control mb-2" %>
+  </div>
+
+<% end %>

@@ -1,34 +1,16 @@
-<h1>Gyms#new</h1>
+<% provide(:title, "GYM CREATE") %>
+<% provide(:url, gyms_path) %>
+<% provide(:button_text, "ジムを作成する") %>
 
-<%= form_for(@gym, url: gyms_path) do |f| %>
+<div class="py-5 bg-light mb-0">
+  <div class="row justify-content-center align-items-center w-100">
+    <div class="col-md-4 bg-white">
+      <div class="form-group text-center mt-3">
+        <h2>GYM CREATE</h2>
+      </div>
 
-  <div class="field">
-    <%= f.label :gym_name %>
-    <%= f.text_field :gym_name, autofocus: true, autocomplete: "name" %>
+      <%= render 'gyms/gym_form' %>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :prefecture %>
-    <%= f.text_field :prefecture, autocomplete: "prefecture" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address, autocomplete: "address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :details %>
-    <%= f.text_field :details, autocomplete: "details" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :gym_image %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ジム作成" %>
-  </div>
-
-<% end %>
+</div>
