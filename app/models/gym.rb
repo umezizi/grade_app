@@ -19,7 +19,6 @@ class Gym < ApplicationRecord
 
   # ジム画像のリサイズ
   def gym_image_resize(size)
-    # return self.gym_image.variant(resize: size).processed
     return self.gym_image.variant(combine_options:{
                           resize:"#{size}>", extent: size,
                           background: "white", gravity: :center}).processed

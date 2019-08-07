@@ -1,6 +1,6 @@
 class GymsController < ApplicationController
   before_action :user_login?, only: [:new, :create, :edit, :update, :destroy]
-  before_action :admin_user?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_user?, only: [:destroy]
 
   MAX_GYMS    = 9
   MAX_REVIEWS = 5

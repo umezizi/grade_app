@@ -19,7 +19,7 @@
     <div class="text-center">
       <h3><strong><i class="fas fa-dumbbell"></i> CLIMBING GYM</strong></h3>
     </div>
-    <p>
+    <div class="mb-4">
       <%= search_form_for(@q, url:gyms_path) do |f| %>
         <div class="form-inline">
           <%= f.search_field :gym_name_cont,
@@ -31,7 +31,7 @@
           <% end %>
         </div>
       <% end %>
-    </p>
+    </div>
 
     <div class="row">
       <% @gyms.each do |gym| %>
