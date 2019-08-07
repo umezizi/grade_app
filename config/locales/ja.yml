@@ -1,6 +1,24 @@
 ---
 ja:
   activerecord:
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+      gym:
+        gym_name: "ジム名"
+        address: "住所"
+        details: "備考"
+        gym_image: "ジム画像"
+      review:
+        title: "タイトル"
+        content: "本文"
+    models:
+      user: "ユーザー"
+      gym: "ジム"
+      review: "レビュー"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

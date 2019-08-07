@@ -11,7 +11,7 @@
         <% end %>
       </div>
       <div class="col-md-10 inline-block">
-        <p><%= post.comment %></p>
+        <p><%= simple_format(h(post.comment)) %></p>
         <div class="text-secondary flex-container">
           <small>投稿者：<%= post.user.name %>  投稿時間：<%= post.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></small>
           <% if current_user == post.user || current_user.admin? %>

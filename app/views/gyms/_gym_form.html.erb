@@ -1,5 +1,7 @@
 <%= form_for(@gym, url: yield(:url)) do |f| %>
 
+  <%= render "devise/shared/error_messages", resource: f.object %>
+
   <div class="field form-group">
     <%= f.label :ジム名 %>
     <%= f.text_field :gym_name, autofocus: true, class: "form-control",
