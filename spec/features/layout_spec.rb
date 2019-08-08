@@ -21,7 +21,7 @@ RSpec.feature "Layouts", type: :feature do
     end
 
     it "タイトルが正しく表示されていること" do
-      expect(page).to have_title "About"
+      expect(page).to have_title "ABOUT"
     end
   end
 end
