@@ -22,8 +22,12 @@
 
     <div class="bg-white p-4 mb-4">
       <div><h4>DESCRIPTION</h4></div>
-      <p>所在地：<%= @gym.address %></p>
-      <p>備　考：<%= simple_format(h(@gym.details)) %></p>
+      <div><b>所在地</b></div>
+      <p><%= @gym.address %></p>
+      <% if !(@gym.details.empty?) %>
+        <div><b>備　考</b></div>
+        <%= simple_format(h(@gym.details)) %>
+      <% end %>
       <div class="text-right">
         <% if user_signed_in? %>
           <%= link_to edit_gym_path, class: 'btn btn-info' do %>
