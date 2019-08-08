@@ -1,3 +1,42 @@
-<% provide(:title, "About") %>
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<% provide(:title, "ABOUT") %>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 mb-md-3 text-center about-top">
+  <div class="col-md-6 p-lg-5 mx-auto my-5">
+    <h2 class="display-4 font-weight-normal text-white">Grade shareとは？</h2>
+    <p class="lead font-weight-normal text-white">クライミングジムを中心に展開するクライマーのためのコミュニティサイトです。大きく２つのサービスを提供します。</p>
+    <% if !user_signed_in? %>
+      <a href="/users/sign_up" class="btn btn-info">はじめる</a>
+    <% end %>
+  </div>
+</div>
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="height: 360px;">
+    <div class="bg-light box-shadow mx-auto about-image" style="width: 100%; height: auto; border-radius: 21px;">
+      <img src="/assets/about_image_review.jpg">
+    </div>
+  </div>
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5 mb-4">1. ジムレビューサービス</h2>
+      <p class="lead text-left">ユーザー登録を行うことで本サイトに記載されているジムにレビューを投稿することが出来ます。<br>
+      レビューには難易度を始めとする４つの指標があり、その平均値をスコアとして算出します。
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5 mb-4">2. コミュニティサービス</h2>
+      <p class="lead text-left">ユーザーはお気に入りのジムを「HOME GYM」として登録することができます。<br>
+      本サイトでは、同じ「HOME GYM」に所属するユーザー間でコメントを共有することが出来ます。</p>
+    </div>
+  </div>
+  <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="height: 400px;">
+    <div class="bg-light box-shadow mx-auto about-image" style="width: 100%; height: auto; border-radius: 21px;">
+      <img src="/assets/about_image_comments.jpg">
+    </div>
+  </div>
+</div>

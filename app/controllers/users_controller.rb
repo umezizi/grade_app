@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     @feed_items = current_user.feed.includes(user: [image_attachment: :blob])
                                            .page(params[:page]).per(MAX_ITEMS)
     @posts   = @user.posts.page(params[:page]).per(MAX_POSTS)
-    @reviews = @user.reviews.includes(:gym).page(params[:page]).per(MAX_REVIEWS)
+    @reviews = @user.reviews.includes(gym: [gym_image_attachment: :blob])
+                                           .page(params[:page]).per(MAX_REVIEWS)
     @gyms    = @user.favorite_gyms.includes(gym_image_attachment: :blob)
                                            .page(params[:page]).per(MAX_GYMS)
   end

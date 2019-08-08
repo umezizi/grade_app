@@ -129,6 +129,51 @@ footer {
   font-weight: bold;
 }
 
+/* about page */
+
+.about-top {
+  background-image: image-url("about_top.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  overflow: hidden;
+  position: relative;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.about-image {
+  img {
+      width: 100%;    /* 横幅を割合で指定 */
+      height: auto;  /* 高さは自動指定 */
+      border-radius: 21px;
+  }
+}
+
+.flex-equal > * {
+  -ms-flex: 1;
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    flex: 1;
+  }
+}
+
+.overflow-hidden { overflow: hidden; }
+
 /* sign up */
 
 .form-group {
