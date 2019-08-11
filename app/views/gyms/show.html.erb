@@ -23,7 +23,7 @@
     <div class="bg-white p-4 mb-4">
       <div><h4>DESCRIPTION</h4></div>
       <div><b>所在地</b></div>
-      <p><%= @gym.address %></p>
+      <p><%= @gym.prefecture + @gym.address %></p>
       <% if !(@gym.details.empty?) %>
         <div><b>備　考</b></div>
         <%= simple_format(h(@gym.details)) %>
@@ -104,11 +104,11 @@
                 <%= link_to image_tag("avatar_image.png", :size => "60x60"),
                                                               review.user %>
               <% end %>
-              <p><%= review.user.name %></p>
+              <p><b><%= review.user.name %></b></p>
             </div>
             <div class="col-md-10 inline-block">
               <div class="flex-container">
-                <h5><%= review.title %></h5>
+                <h5><b><%= review.title %></b></h5>
                 <% if user_signed_in? %>
                   <% if current_user.id == review.user_id || current_user.admin? %>
                     <%= link_to  gym_review_path(@gym,review),

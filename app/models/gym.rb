@@ -14,8 +14,12 @@ class Gym < ApplicationRecord
   validates :address,   presence: true
 
   # アドレスから経度・緯度を取得
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  geocoded_by :full_address
+  after_validation :geocode, if: :address_changed?, if: :prefecture_changed?
+
+  def full_address
+    prefecture + address
+  end
 
   # ジム画像のリサイズ
   def gym_image_resize(size)
