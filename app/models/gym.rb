@@ -11,7 +11,8 @@ class Gym < ApplicationRecord
   validates :gym_name, presence: true, length: { maximum: 50 },
              uniqueness: { case_sensitive: false }
   validates :details, length: { maximum: 500 }
-  validates :address,   presence: true
+  validates :prefecture, presence: true
+  validates :address,    presence: true
 
   # アドレスから経度・緯度を取得
   geocoded_by :full_address

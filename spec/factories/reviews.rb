@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :review do
-    title { "MyString" }
-    content { "MyText" }
-    grade { 1 }
-    breadth { 1 }
-    wall_height { 1 }
-    congestion { 1 }
-    gym { nil }
-    user { nil }
+    title { "テストタイトル" }
+    content { "テスト本文" }
+    grade { 1.5 }
+    breadth { 1.5 }
+    wall_height { 1.5 }
+    congestion { 1.5 }
+    gym
+    user
   end
 end
