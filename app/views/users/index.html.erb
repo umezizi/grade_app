@@ -20,7 +20,7 @@
                 <%= link_to user.name, user, class: "text-dark" %>
               </h5>
               <% if current_user.admin? && !(current_user == user) %>
-                <%= link_to user, method: :delete, class:"ml-2 text-dark",
+                <%= link_to user, method: :delete, class: "ml-2 text-dark",
                             data: { confirm: "ユーザーを削除しますか？" } do %>
                   <i class="fas fa-user-minus"></i>
                 <% end %>

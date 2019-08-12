@@ -13,7 +13,7 @@
   </div>
 </section>
 
-<div class="album py-5 bg-light mb-0">
+<div class="py-5 bg-light mb-0">
   <div class="container">
 
     <div class="text-center">
@@ -23,10 +23,10 @@
       <%= search_form_for(@q, url:gyms_path) do |f| %>
         <div class="form-inline">
           <%= f.search_field :gym_name_cont,
-                              class: "form-control col-3 ml-auto mr-sm-2",
+                              class: "form-control col-md-3 ml-auto mr-sm-2",
                               placeholder: "ジムを検索..."  %>
-          <%= button_tag type: "submit", name: nil, 
-                              class: "btn  my-2 my-sm-0 btn-info search-btn" do %>
+          <%= button_tag type: "submit", name: nil,
+                              class: "btn my-2 my-sm-0 btn-info search-btn" do %>
             <i class="fas fa-search"></i>
           <% end %>
         </div>
@@ -60,6 +60,8 @@
         </div>
       <% end %>
     </div>
+
     <%= paginate @gyms %>
+
   </div>
 </div>

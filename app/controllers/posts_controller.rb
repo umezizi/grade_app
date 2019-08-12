@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :user_login?,     only: [:create, :destroy]
-  before_action :delete_post_set, only: :destroy
+  before_action :user_login?,  only: [:create, :destroy]
+  before_action :correct_user, only: :destroy
 
   def create
     @post = current_user.posts.build(post_params)
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:comment)
     end
 
-    def delete_post_set
+    def correct_user
       @post = current_user.posts.find_by(id: params[:id])
       redirect_to user_path(current_user) if @post.nil?
     end

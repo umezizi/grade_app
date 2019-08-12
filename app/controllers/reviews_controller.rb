@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :user_login?, only: [:new, :create, :destroy]
+  before_action :user_login?,  only: [:new, :create, :destroy]
+  before_action :correct_user, only: :destroy
 
   def new
     @gym    = Gym.find(params[:gym_id])
@@ -19,8 +20,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @gym = Gym.find(params[:gym_id])
-    Review.find(params[:id]).destroy
+    @review.destroy
     redirect_back(fallback_location: root_path)
   end
 
@@ -28,5 +28,10 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:title, :content, :grade, :breadth, :wall_height, :congestion)
+    end
+
+    def correct_user
+      @review = current_user.reviews.find_by(id: params[:id])
+      redirect_to root_path if @review.nil?
     end
 end

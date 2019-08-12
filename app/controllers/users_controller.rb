@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.includes(image_attachment: :blob).find(params[:id])
     @post = current_user.posts.build
 
-    @feed_items = current_user.feed.includes(user: [image_attachment: :blob])
+    @feed_items = @user.feed.includes(user: [image_attachment: :blob])
                                            .page(params[:page]).per(MAX_ITEMS)
     @posts   = @user.posts.page(params[:page]).per(MAX_POSTS)
     @reviews = @user.reviews.includes(gym: [gym_image_attachment: :blob])

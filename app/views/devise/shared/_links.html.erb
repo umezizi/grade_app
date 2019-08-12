@@ -2,7 +2,7 @@
   <div class="text-right form-layout form-line pb-2">
     <small>
       アカウントをお持ちの方は<%= link_to "こちら",
-                    new_session_path(resource_name),class:"text-info" %><br />
+                    new_session_path(resource_name),class: "text-info" %><br />
     </small>
   </div>
 <% end %>
@@ -11,7 +11,7 @@
   <div class="text-right">
     <small>
       アカウントをお持ちでない方は<%= link_to "こちら",
-              new_registration_path(resource_name), class:"text-info" %><br />
+              new_registration_path(resource_name), class: "text-info" %><br />
     </small>
   </div>
 <% end %>
@@ -20,7 +20,7 @@
   <div class="text-right form-layout form-line pb-2">
     <small>
       パスワードをお忘れの場合は<%= link_to "こちら",
-              new_password_path(resource_name), class:"text-info"%><br />
+              new_password_path(resource_name), class: "text-info"%><br />
     </small>
   </div>
 <% end %>
@@ -37,7 +37,7 @@
   <div class="form-layout">
     <%- resource_class.omniauth_providers.each do |provider| %>
       <%= link_to omniauth_authorize_path(resource_name, provider), method: :post,
-                                            class:"btn twitter-btn" do %>
+                                            class: "btn twitter-btn" do %>
         <i class="fab fa-twitter"></i> Twitterアカウントでログイン<br />
       <% end %>
     <% end %>
@@ -50,7 +50,7 @@
       <%= f.hidden_field :email, {value: 'test@example.com'} %>
       <%= f.hidden_field :password, {value: 'password'} %>
       <%= f.submit "テストユーザーでログイン",
-                                  class:"btn-secondary form-control mb-2" %>
+                                  class: "btn-secondary form-control mb-2" %>
     <% end %>
   </div>
 <% end %>

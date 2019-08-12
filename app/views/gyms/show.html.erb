@@ -110,7 +110,7 @@
               <div class="flex-container">
                 <h5><b><%= review.title %></b></h5>
                 <% if user_signed_in? %>
-                  <% if current_user.id == review.user_id || current_user.admin? %>
+                  <% if current_user.id == review.user_id %>
                     <%= link_to  gym_review_path(@gym,review),
                                  method: :delete, class:"text-secondary",
                                  data: { confirm: "レビューを削除しますか？" } do %>
@@ -119,7 +119,7 @@
                   <% end %>
                 <% end %>
               </div>
-              <p><%= simple_format(h(review.content)) %></p>
+              <%= simple_format(h(review.content)) %>
               <p class="text-right">
                 <small>難易度：<%= review.grade %>　広さ：<%= review.breadth %>　壁の高さ：<%= review.wall_height %>　混雑度：<%= review.congestion %></small>
               </p>

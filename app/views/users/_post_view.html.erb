@@ -11,10 +11,10 @@
         <% end %>
       </div>
       <div class="col-md-10 inline-block">
-        <p><%= simple_format(h(post.comment)) %></p>
+        <%= simple_format(h(post.comment)) %>
         <div class="text-secondary flex-container">
           <small>投稿者：<%= post.user.name %>  投稿時間：<%= post.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></small>
-          <% if current_user == post.user || current_user.admin? %>
+          <% if current_user == post.user %>
             <%= link_to post, method: :delete, class: "text-secondary",
                               data: { confirm: "コメントを削除しますか？" } do %>
               <i class="fas fa-trash-alt"></i>
