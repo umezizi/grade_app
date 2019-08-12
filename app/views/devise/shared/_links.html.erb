@@ -49,7 +49,7 @@
     <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
       <%= f.hidden_field :email, {value: 'test@gradeshare.com'} %>
       <%= f.hidden_field :password, {value: 'password'} %>
-      <%= f.submit "テストユーザーでログイン",
+      <%= f.submit "デモユーザーでログイン",
                                   class: "btn-secondary form-control mb-2" %>
     <% end %>
   </div>
