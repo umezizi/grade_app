@@ -78,13 +78,9 @@ class User < ApplicationRecord
     result
   end
 
-  class << self
-    private
-
-    # Oauth認証でユーザー登録する際に使用するユニークなメールアドレスを作成
-    def dummy_email(auth)
-      "#{auth.uid}-#{auth.provider}@example.com"
-    end
+  # Oauth認証でユーザー登録する際に使用するユニークなメールアドレスを作成
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
   end
 
   private

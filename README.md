@@ -1,7 +1,18 @@
-# README
+# GradeShare
 
+クライミングジムのレビューと、クライミングジムを中心に展開するクライマーの為のコミニュティサービスです。
 
-This README would normally document whatever steps are necessary to get the
+URL:<https://www.grade-share.com/>
+
+## デモアカウント
+
+```md
+email: test@gradeshare.com
+password: password
+
+```
+
+ README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
