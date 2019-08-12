@@ -1,10 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   # twitter認証のcallback処理
   def twitter
     callback_from :twitter
   end
-
 
   private
 
@@ -15,12 +13,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       # Twitterアカウント情報が登録済みか確認
       if @user.persisted?
-        print("persisted true")
+        print('persisted true')
         flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
         @user.download_oauth_image
         sign_in_and_redirect @user, event: :authentication
       else
-        print("persisted false")
+        print('persisted false')
         session["devise.#{provider}_data"] = request.env['omniauth.auth']
         redirect_to controller: 'sessions', action: 'new'
       end

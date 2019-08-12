@@ -1,6 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
-
   protected
 
     # アカウント編集後、プロフィール画面に移動する
@@ -9,6 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     def update_resource(resource, params)
-    resource.update_without_current_password(params)
+      resource.update_without_current_password(params)
     end
 end

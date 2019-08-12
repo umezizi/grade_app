@@ -28,9 +28,10 @@ class GymsController < ApplicationController
   def create
     @gym = Gym.new(gym_params)
     if @gym.save
+      flash[:success] = 'ジムが追加されました！'
       redirect_to gym_path(@gym)
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -43,7 +44,7 @@ class GymsController < ApplicationController
     if @gym.update_attributes(gym_params)
       redirect_to gym_path(@gym)
     else
-      render "edit"
+      render 'edit'
     end
   end
 

@@ -4,12 +4,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to user_path(current_user)
-    else
-      @feed_items = []
-      redirect_to user_path(current_user)
-    end
+    @post.save
+    redirect_to user_path(current_user)
   end
 
   def destroy

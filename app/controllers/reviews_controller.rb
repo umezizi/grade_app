@@ -11,9 +11,10 @@ class ReviewsController < ApplicationController
     @review  = @gym.reviews.build(review_params)
     @review.user_id = current_user.id
     if @review.save
+      flash[:success] = 'レビューが投稿されました！'
       redirect_to gym_path(@gym)
     else
-      render "new"
+      render 'new'
     end
   end
 

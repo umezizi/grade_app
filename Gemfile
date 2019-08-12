@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.2'
 
 gem 'rails', '~> 5.2.3'
-# gem 'bootstrap-sass'
 gem 'bootstrap', '~> 4.1.1'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
@@ -28,17 +27,18 @@ gem 'kaminari', '1.1.1'
 gem 'ransack'
 gem 'gmaps4rails'
 gem 'geocoder'
-gem 'bullet'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'jp_prefecture'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'bullet'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'capybara'
   gem 'faker'
   gem 'rails-controller-testing'
+  gem 'rubocop', require: false
 end
 
 group :development do

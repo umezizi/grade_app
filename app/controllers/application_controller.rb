@@ -7,12 +7,10 @@ class ApplicationController < ActionController::Base
   # ログイン前のページを保存する
   before_action :store_current_location, unless: :devise_controller?
 
-
   # ログイン後に元のページに戻る
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || root_path
   end
-
 
   private
 
@@ -35,5 +33,4 @@ class ApplicationController < ActionController::Base
     def admin_user?
       redirect_to(root_url) unless current_user.admin?
     end
-
 end
