@@ -1,7 +1,7 @@
 # GradeShare
 
 クライミングジムを中心に展開するクライマーの為のコミュニティサービスです。<br>
-詳しくは本アプリの「ABOUT」ページをご覧ください。
+詳しくは本アプリの[「ABOUT」](https://www.grade-share.com/about)ページをご覧ください。
 
 URL:<https://www.grade-share.com/>
 
@@ -50,7 +50,7 @@ password: password
     - 統合テスト(feature spec)
   - factory_bot
 
-## 技術
+## 技術一覧
 
 - Ruby 2.6.2
 - Ruby on Rails 5.2.3
@@ -105,7 +105,7 @@ RSpecによるテストもDockerコンテナ上で実施しています。
 
 ## 課題
 
-時間の都合上、下記の課題が残っています。
+時間の都合上着手する出来なった以下の課題が残っています。
 
 - テストケースの不足（主に統合テスト）
 - 当初予定していたソート機能の未実装
