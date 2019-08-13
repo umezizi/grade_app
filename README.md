@@ -80,6 +80,7 @@ CircleCIはGitHubのリポジトリへのpushに応答して稼働します。<b
 RSpecによるテストを実行し、ビルドしたDockerイメージをECRにpush、その後ECRからECSへデプロイを行います。<br>
 デプロイしたDockerイメージはEC2インスタンス上でDockerコンテナとして稼働します。
 
+
 ### ポイント
 
 ###### 本番環境
