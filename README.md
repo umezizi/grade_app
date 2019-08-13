@@ -71,10 +71,11 @@ password: password
   - VPC
   - SES
 
-## システム構成図
+## 環境
+
+### AWS構成図
 
 ![AWS Diagram](https://user-images.githubusercontent.com/47072076/62945879-91706480-be1a-11e9-9e4b-f129181bdade.png)
-
 CircleCIはGitHubのリポジトリへのpushに応答して稼働します。<br>
 RSpecによるテストを実行し、ビルドしたDockerイメージをECRにpush、その後ECRからECSへデプロイを行います。<br>
 デプロイしたDockerイメージはEC2インスタンス上でDockerコンテナとして稼働します。
@@ -96,7 +97,7 @@ RSpecによるテストを実行し、ビルドしたDockerイメージをECRに
 ###### 開発環境
 
 - 開発はDocker環境で実施しています。<br>
-　RSpecによるテストもDockerコンテナ上で実施しています。
+RSpecによるテストもDockerコンテナ上で実施しています。
 
 - bulletを使用して「N＋１」問題を解消しています。
 
