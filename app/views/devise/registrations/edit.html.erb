@@ -28,7 +28,7 @@
                                  class: "form-control", autocomplete: "name" %>
         </div>
 
-        <% unless @user.provider == "twitter" && @user.email != "test@gradeshare.com" %>
+        <% unless @user.provider == "twitter" && @user.email == "test@gradeshare.com" %>
           <div class="field form-group">
             <%= f.label :メールアドレス %><br />
             <%= f.email_field :email, class: "form-control", autocomplete: "email" %>
