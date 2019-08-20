@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   require 'open-uri'
 
-  has_many :reviews
-  has_many :posts, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :posts,   dependent: :destroy
   has_many :active_relationships, class_name:  'Relationship',
                                   foreign_key: 'guest_user_id',
                                   dependent:   :destroy

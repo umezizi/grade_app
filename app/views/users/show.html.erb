@@ -27,7 +27,7 @@
           <% if @gyms.any? %>
             <h6><i class="fas fa-dumbbell"></i> HOME GYM</h6>
             <div class="home-gym-image">
-              <% @gyms.each do |gym| %>
+              <% @gyms_all.each do |gym| %>
                 <% if gym.gym_image.attached? %>
                   <%= link_to image_tag(gym.gym_image_resize("60x60")), gym %>
                 <% else %>
@@ -66,10 +66,10 @@
           </ul>
           <div class="tab-content">
             <div id="tab1" class="tab-pane p-2 active">
-               <%= render "post_view", posts: @feed_items %>
+               <%= render "post_view", posts: @feed_items, page_name: 'feed_page' %>
             </div>
             <div id="tab2" class="tab-pane p-2">
-               <%= render "post_view", posts: @posts  %>
+               <%= render "post_view", posts: @posts, page_name: 'post_page' %>
             </div>
             <div id="tab3" class="tab-pane p-2">
                <%= render "review_view" %>

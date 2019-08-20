@@ -30,4 +30,4 @@
     </li>
   <% end %>
 </ul>
-<%= paginate @reviews %>
+<%= paginate @reviews, :param_name => 'review_page' %>

@@ -17,12 +17,12 @@ class UsersController < ApplicationController
     @post = current_user.posts.build
 
     @feed_items = @user.feed.includes(user: [image_attachment: :blob])
-                                           .page(params[:page]).per(MAX_ITEMS)
-    @posts   = @user.posts.page(params[:page]).per(MAX_POSTS)
+                                      .page(params[:feed_page]).per(MAX_ITEMS)
+    @posts   = @user.posts.page(params[:post_page]).per(MAX_POSTS)
     @reviews = @user.reviews.includes(gym: [gym_image_attachment: :blob])
-                                           .page(params[:page]).per(MAX_REVIEWS)
-    @gyms    = @user.favorite_gyms.includes(gym_image_attachment: :blob)
-                                           .page(params[:page]).per(MAX_GYMS)
+                                      .page(params[:review_page]).per(MAX_REVIEWS)
+    @gyms_all = @user.favorite_gyms.includes(gym_image_attachment: :blob)
+    @gyms     = @gyms_all.page(params[:gym_page]).per(MAX_GYMS)
   end
 
   def destroy
