@@ -31,4 +31,26 @@ RSpec.feature "Gyms", type: :feature do
     expect(page).to have_content "北海道札幌市西区宮の沢２条２丁目１１−３６"
     expect(page).to have_content "テスト備考"
   end
+
+  scenario "ログインしていない場合、各種ボタンが表示されないこと" do
+    visit gym_path(gym)
+    expect(page).to_not have_button "編集"
+    expect(page).to_not have_button "ホームジム登録"
+    expect(page).to_not have_button "ホームジム解除"
+    expect(page).to_not have_button "レビューする"
+  end
+
+  scenario "ホームジム登録と解除が出来ること" do
+    sign_in user
+    visit gym_path(gym)
+    click_button "ホームジム登録"
+    expect(page).to have_button "ホームジム解除"
+    visit user_path(user)
+    expect(page).to have_content "MyGym"
+    visit gym_path(gym)
+    click_button "ホームジム解除"
+    expect(page).to have_button "ホームジム登録"
+    visit user_path(user)
+    expect(page).to_not have_content "MyGym"
+  end
 end
