@@ -13,11 +13,6 @@ WORKDIR $APP_ROOT
 ADD Gemfile $APP_ROOT
 ADD Gemfile.lock $APP_ROOT
 
-# RUN gem update --system
-# RUN gem uninstall bundler
-# RUN rm /usr/local/bin/bundle
-# RUN rm /usr/local/bin/bundler
-# RUN gem install bundler
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs
 
