@@ -1,5 +1,6 @@
 # GradeShare
 
+
 クライミングジムを中心に展開するクライマーの為のコミュニティサービスです。<br>
 詳しくは本アプリの[「ABOUT」](https://www.grade-share.com/about)ページをご覧ください。
 
