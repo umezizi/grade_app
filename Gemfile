@@ -18,7 +18,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'aws-ses'
-gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.9'
 gem 'asset_sync'
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
