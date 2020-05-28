@@ -23,7 +23,7 @@ gem 'asset_sync'
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
 gem 'omniauth-rails_csrf_protection'
-gem 'kaminari', '1.1.1'
+gem 'kaminari', '1.2.1'
 gem 'ransack'
 gem 'gmaps4rails'
 gem 'geocoder'
